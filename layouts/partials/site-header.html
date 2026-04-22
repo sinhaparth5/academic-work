@@ -23,7 +23,7 @@
     </button>
     <nav class="aw-nav" id="aw-primary-nav" aria-label="Primary">
       {{ range hugo.Data.navigation.main.items }}
-        {{ $isActive := or (eq $.RelPermalink .url) (and (ne .url "/") (hasPrefix $.RelPermalink (.url | relURL))) }}
+        {{ $isActive := or (eq $.RelPermalink (.url | relURL)) (and (ne .url "/") (hasPrefix $.RelPermalink (.url | relURL))) }}
         <a class="aw-nav__link{{ if $isActive }} aw-nav__link--active{{ end }}" href="{{ .url | relURL }}">{{ .name }}</a>
       {{ end }}
     </nav>
