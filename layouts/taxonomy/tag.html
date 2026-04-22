@@ -1,0 +1,10 @@
+{{ define "main" }}
+<main class="aw-shell">
+  <header class="aw-page-header">
+    <p class="aw-eyebrow">Tag</p>
+    <h1 class="aw-page-header__title">#{{ .Title }}</h1>
+    <p class="aw-page-header__desc">{{ len .Pages }} {{ if eq (len .Pages) 1 }}entry{{ else }}entries{{ end }}</p>
+  </header>
+  {{ partial "section-list.html" . }}
+</main>
+{{ end }}

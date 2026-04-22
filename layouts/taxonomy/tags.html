@@ -1,0 +1,16 @@
+{{ define "main" }}
+<main class="aw-shell">
+  <header class="aw-page-header">
+    <p class="aw-eyebrow">Index</p>
+    <h1 class="aw-page-header__title">Tags</h1>
+    <p class="aw-page-header__desc">{{ len .Data.Terms }} {{ if eq (len .Data.Terms) 1 }}tag{{ else }}tags{{ end }} across all sections.</p>
+  </header>
+  <div class="aw-tag-cloud">
+    {{ range .Data.Terms.Alphabetical }}
+      <a class="aw-tag-cloud__item" href="{{ .Page.RelPermalink }}">
+        {{ .Page.Title }}<span class="aw-tag-cloud__count">{{ .Count }}</span>
+      </a>
+    {{ end }}
+  </div>
+</main>
+{{ end }}

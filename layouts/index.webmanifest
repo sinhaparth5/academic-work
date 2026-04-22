@@ -1,0 +1,23 @@
+{
+  "name": {{ site.Title | jsonify }},
+  "short_name": {{ site.Title | jsonify }},
+  "description": {{ site.Params.description | default "" | jsonify }},
+  "start_url": "/",
+  "display": "minimal-ui",
+  "background_color": "#f5f4f1",
+  "theme_color": "#111110",
+  "icons": [
+    {
+      "src": {{ "/icons/icon-192.png" | absURL | jsonify }},
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": {{ "/icons/icon-512.png" | absURL | jsonify }},
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

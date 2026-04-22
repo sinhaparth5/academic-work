@@ -2,3 +2,6 @@
 public/
 resources/
 .codex
+designs/
+exampleSite/public/
+exampleSite/resources/

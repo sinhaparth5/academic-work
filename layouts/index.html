@@ -1,33 +1,20 @@
 {{ define "main" }}
-<main class="site-shell">
-  <section class="home-hero">
-    <div class="home-hero__text">
-      <p class="eyebrow">Minimal Hugo Template</p>
-      <h1>{{ site.Title }}</h1>
-      {{ with site.Params.intro }}<p>{{ . }}</p>{{ end }}
-      <div class="home-hero__actions">
-        <a class="button-link" href="{{ `/research/` | relURL }}">Browse research</a>
-        <a class="button-link button-link--muted" href="{{ `/about/` | relURL }}">About the site</a>
-      </div>
-    </div>
-    <aside class="home-panel">
-      <p class="eyebrow">Includes</p>
-      <ul class="feature-list">
-        <li>Research outputs and publications</li>
-        <li>Reading notes and teaching pages</li>
-        <li>PDF, TeX, and resource collections</li>
-        <li>Profile and portfolio pages</li>
-      </ul>
-    </aside>
+<main class="aw-shell">
+  <section class="aw-home-intro">
+    <p class="aw-eyebrow">Academic Template</p>
+    <h1 class="aw-home-intro__title">{{ site.Title }}</h1>
+    {{ with site.Params.intro }}<p class="aw-home-intro__desc">{{ . }}</p>{{ end }}
   </section>
-  <div class="prose intro-copy">
-    {{ .Content }}
+  {{ with .Content }}
+  <div class="aw-home-copy aw-prose">
+    {{ . }}
   </div>
-  <section class="home-grid">
+  {{ end }}
+  <div class="aw-home-grid">
     {{ partial "home-section.html" (dict "section" "research" "label" "Research" "summary" "Publications, preprints, talks, and ongoing academic work.") }}
     {{ partial "home-section.html" (dict "section" "notes" "label" "Notes" "summary" "Working notes, reading logs, and lecture material.") }}
-    {{ partial "home-section.html" (dict "section" "library" "label" "Library" "summary" "Downloadable documents, appendices, PDFs, and related files." ) }}
-    {{ partial "home-section.html" (dict "section" "projects" "label" "Projects" "summary" "Software, experiments, and side work around your research." ) }}
-  </section>
+    {{ partial "home-section.html" (dict "section" "library" "label" "Library" "summary" "Downloadable documents, appendices, PDFs, and related files.") }}
+    {{ partial "home-section.html" (dict "section" "projects" "label" "Projects" "summary" "Software, experiments, and side work around your research.") }}
+  </div>
 </main>
 {{ end }}

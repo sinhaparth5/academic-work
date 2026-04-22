@@ -21,24 +21,77 @@ enableRobotsTXT = true
     twitterHandle = ""
     defaultRobots = "index,follow"
 
+[[params.social]]
+  name = "GitHub"
+  icon = "/images/socials/github-svgrepo-com.svg"
+  url = "https://github.com/example"
+
+[[params.social]]
+  name = "GitLab"
+  icon = "/images/socials/gitlab-svgrepo-com.svg"
+  url = "https://gitlab.com/example"
+
+[[params.social]]
+  name = "Bitbucket"
+  icon = "/images/socials/bitbucket-svgrepo-com.svg"
+  url = "https://bitbucket.org/example"
+
+[[params.social]]
+  name = "X"
+  icon = "/images/socials/Twitter-X--Streamline-Bootstrap.svg"
+  url = "https://x.com/example"
+
+[[params.social]]
+  name = "Facebook"
+  icon = "/images/socials/facebook-svgrepo-com.svg"
+  url = "https://facebook.com/example"
+
+[[params.social]]
+  name = "Instagram"
+  icon = "/images/socials/instagram-color-svgrepo-com.svg"
+  url = "https://instagram.com/example"
+
+[[params.social]]
+  name = "WhatsApp"
+  icon = "/images/socials/whatsapp-svgrepo-com.svg"
+  url = "https://wa.me/1234567890"
+
 [permalinks]
-  notes = "/notes/:slug/"
-  research = "/research/:slug/"
-  library = "/library/:slug/"
-  projects = "/projects/:slug/"
-  teaching = "/teaching/:slug/"
+  notes    = "/notes/~/:slug/"
+  research = "/research/~/:slug/"
+  library  = "/library/~/:slug/"
+  projects = "/projects/~/:slug/"
+  teaching = "/teaching/~/:slug/"
+
+[mediaTypes]
+  [mediaTypes."application/manifest+json"]
+    suffixes = ["webmanifest"]
+
+[outputFormats]
+  [outputFormats.WebAppManifest]
+    mediaType      = "application/manifest+json"
+    baseName       = "site"
+    rel            = "manifest"
+    isHTML         = false
+    notAlternative = false
 
 [outputs]
-  home = ["HTML"]
-  section = ["HTML"]
-  page = ["HTML"]
+  home     = ["HTML", "RSS", "WebAppManifest"]
+  section  = ["HTML", "RSS"]
+  page     = ["HTML"]
   taxonomy = ["HTML"]
-  term = ["HTML"]
+  term     = ["HTML"]
+  404      = ["HTML"]
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = false
+    [markup.goldmark.extensions.passthrough]
+      enable = true
+      [markup.goldmark.extensions.passthrough.delimiters]
+        block  = [["$$", "$$"]]
+        inline = [["$", "$"]]
 
 [taxonomies]
   tag = "tags"

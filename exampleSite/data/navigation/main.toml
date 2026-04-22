@@ -1,0 +1,23 @@
+[[items]]
+name = "About"
+url  = "/about/"
+
+[[items]]
+name = "Research"
+url  = "/research/"
+
+[[items]]
+name = "Notes"
+url  = "/notes/"
+
+[[items]]
+name = "Library"
+url  = "/library/"
+
+[[items]]
+name = "Projects"
+url  = "/projects/"
+
+[[items]]
+name = "Teaching"
+url  = "/teaching/"

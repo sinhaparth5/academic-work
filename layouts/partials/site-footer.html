@@ -1,7 +1,26 @@
-<footer class="site-footer">
-  <div class="site-footer__inner">
-    <p>{{ site.Title }}.</p>
-    <p>{{ site.Params.description }}</p>
-    {{ with site.Params.email }}<p><a href="mailto:{{ . }}">{{ . }}</a></p>{{ end }}
+<footer class="aw-footer">
+  <div class="aw-footer__inner">
+    <div class="aw-footer__meta">
+      <p>{{ site.Title }}.</p>
+      <p>{{ site.Params.description }}</p>
+      {{ with site.Params.email }}<p><a href="mailto:{{ . }}">{{ . }}</a></p>{{ end }}
+    </div>
+    {{ with site.Params.social }}
+      <div class="aw-social" aria-label="Social links">
+        {{ range . }}
+          {{ $name := .name }}
+          {{ $iconRes := resources.Get (strings.TrimPrefix "/" .icon) }}
+          {{ if .url }}
+            <a class="aw-social__item" href="{{ .url }}" aria-label="{{ $name }}" target="_blank" rel="me noreferrer">
+              {{ with $iconRes }}<img src="{{ .RelPermalink }}" alt="{{ $name }}">{{ end }}
+            </a>
+          {{ else }}
+            <span class="aw-social__item" aria-label="{{ $name }}">
+              {{ with $iconRes }}<img src="{{ .RelPermalink }}" alt="{{ $name }}">{{ end }}
+            </span>
+          {{ end }}
+        {{ end }}
+      </div>
+    {{ end }}
   </div>
 </footer>

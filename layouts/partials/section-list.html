@@ -1,25 +1,27 @@
 {{ $pages := .Pages.ByDate.Reverse }}
 {{ if gt (len $pages) 0 }}
-  <div class="content-list">
+  <div class="aw-list">
     {{ range $pages }}
-      <article class="content-card">
-        <p class="content-card__meta">
-          {{ with .Date }}<time datetime="{{ .Format `2006-01-02` }}">{{ .Format "2 Jan 2006" }}</time>{{ end }}
+      <article class="aw-card">
+        <div class="aw-card__meta">
+          {{ with .Date }}<time datetime="{{ .Format `2006-01-02` }}">{{ .Format "Jan 2006" }}</time>{{ end }}
           {{ with .Params.publication }}<span>{{ . }}</span>{{ end }}
           {{ with .Params.series }}<span>{{ . }}</span>{{ end }}
-        </p>
-        <h2 class="content-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-        {{ with .Summary | plainify }}<p class="content-card__summary">{{ . }}</p>{{ end }}
-        {{ with .Params.tags }}
-          <p class="content-card__tags">
-            {{ range . }}<span>{{ . }}</span>{{ end }}
-          </p>
-        {{ end }}
+        </div>
+        <div>
+          <h2 class="aw-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{ with .Summary | plainify }}<p class="aw-card__summary">{{ . }}</p>{{ end }}
+          {{ with .Params.tags }}
+            <p class="aw-card__tags">
+              {{ range . }}<span class="aw-card__tag">{{ . }}</span>{{ end }}
+            </p>
+          {{ end }}
+        </div>
       </article>
     {{ end }}
   </div>
 {{ else }}
-  <div class="empty-state">
+  <div class="aw-empty">
     <p>No entries yet.</p>
   </div>
 {{ end }}

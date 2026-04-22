@@ -1,9 +1,14 @@
 {{ define "main" }}
-<main class="site-shell">
-  <article class="prose">
-    <p class="eyebrow">{{ .Section }}</p>
+<main class="aw-shell">
+  <article class="aw-prose">
+    {{ with .CurrentSection }}
+      {{ if ne .RelPermalink "/" }}
+        <a class="aw-back-link" href="{{ .RelPermalink }}">← {{ .Title }}</a>
+      {{ end }}
+    {{ end }}
+    <p class="aw-eyebrow">{{ .Section }}</p>
     <h1>{{ .Title }}</h1>
-    {{ with .Date }}<p class="single-meta"><time datetime="{{ .Format `2006-01-02` }}">{{ .Format "2 Jan 2006" }}</time></p>{{ end }}
+    {{ with .Date }}<p class="aw-single__meta"><time datetime="{{ .Format `2006-01-02` }}">{{ .Format "2 January 2006" }}</time></p>{{ end }}
     {{ .Content }}
   </article>
 </main>
