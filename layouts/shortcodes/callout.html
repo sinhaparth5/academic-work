@@ -1,0 +1,8 @@
+{{ $tone := .Get "tone" | default "note" }}
+{{ $title := .Get "title" | default "Note" }}
+<aside class="aw-callout aw-callout--{{ $tone }}">
+  <p class="aw-callout__title">{{ $title }}</p>
+  <div class="aw-callout__body">
+    {{ .Inner | markdownify }}
+  </div>
+</aside>

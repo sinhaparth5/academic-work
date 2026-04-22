@@ -1,5 +1,16 @@
 {{ $title := cond .IsHome site.Title (printf "%s | %s" .Title site.Title) }}
-{{ $description := .Description | default .Summary | default site.Params.description }}
+{{ $description := site.Params.description }}
+{{ with .Params.summary }}
+  {{ $description = . }}
+{{ else }}
+  {{ with .Description }}
+    {{ $description = . }}
+  {{ else }}
+    {{ with .Plain }}
+      {{ $description = . | plainify | truncate 160 }}
+    {{ end }}
+  {{ end }}
+{{ end }}
 {{ $robots := cond .Params.noindex "noindex,nofollow" (site.Params.seo.defaultRobots | default "index,follow") }}
 {{ $image := "" }}
 {{ with .Params.images }}
@@ -25,7 +36,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="{{ `/icons/favicon-16x16.png` | relURL }}">
 <link rel="apple-touch-icon" sizes="180x180" href="{{ `/icons/apple-touch-icon.png` | relURL }}">
 {{ $manifest := .Site.Home.OutputFormats.Get "WebAppManifest" }}
-{{ with $manifest }}<link rel="manifest" href="{{ .Permalink | safeURL }}">
+{{ with $manifest }}<link rel="manifest" href="{{ .RelPermalink | safeURL }}">
 {{ end }}
 {{ range .AlternativeOutputFormats }}{{ if ne .Rel "manifest" }}
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ site.Title }}">

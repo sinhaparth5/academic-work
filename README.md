@@ -2,7 +2,7 @@
 
 A clean, minimal Hugo theme for academics, researchers, and scholars. Built around a text-first philosophy — your writing and research take centre stage.
 
-![Screenshot](images/screenshot.png)
+The repository includes a complete `exampleSite/` and a dedicated `Theme` reference page for checking palette, spacing, grids, tables, code blocks, and LaTeX rendering in one place.
 
 ## Features
 
@@ -27,7 +27,7 @@ A clean, minimal Hugo theme for academics, researchers, and scholars. Built arou
 ### As a Git submodule (recommended)
 
 ```bash
-git submodule add https://github.com/USERNAME/academic-work themes/academic-work
+git submodule add https://github.com/sinhaparth5/academic-work themes/academic-work
 ```
 
 Add `theme = "academic-work"` to your `hugo.toml`.
@@ -37,20 +37,22 @@ Add `theme = "academic-work"` to your `hugo.toml`.
 ```toml
 [module]
   [[module.imports]]
-    path = "github.com/USERNAME/academic-work"
+    path = "github.com/sinhaparth5/academic-work"
 ```
 
 ## Quick start
 
-Copy `exampleSite/` to a new directory, then run:
+To preview the showcase content from this repository, run:
 
 ```bash
-hugo server
+hugo server --config exampleSite/hugo.toml --contentDir exampleSite/content
 ```
+
+If you are using the theme in your own site, copy the structure of `exampleSite/` into your project and run `hugo server` there.
 
 ## Configuration
 
-Full example in [`exampleSite/hugo.toml`](exampleSite/hugo.toml). Key parameters:
+Full showcase configuration lives in [`exampleSite/hugo.toml`](exampleSite/hugo.toml). Typical site parameters:
 
 ```toml
 [params]
@@ -90,6 +92,8 @@ name = "Research"
 url  = "/research/"
 ```
 
+The showcase navigation in this repository also includes a `Theme` page in `exampleSite/content/theme.md`.
+
 ### Content sections
 
 | Section    | Archetype   | Typical use                              |
@@ -127,7 +131,7 @@ links:
   - label: "PDF"
     url: "/files/paper.pdf"
   - label: "Code"
-    url: "https://github.com/example/repo"
+    url: "https://github.com/yourname/project-repo"
 ---
 ```
 
@@ -167,6 +171,17 @@ $$
 ```
 
 Requires Hugo ≥ 0.122.0 (Goldmark passthrough extension).
+
+### Hugo version support
+
+The theme declares Hugo version support in the root [`hugo.toml`](hugo.toml) using:
+
+```toml
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.122.0"
+```
 
 ### SEO & PWA
 
@@ -208,6 +223,8 @@ Place your screenshots at:
 - `images/tn.png` — 900 × 600 px, thumbnail crop
 
 These are required for listing on [themes.gohugo.io](https://themes.gohugo.io).
+
+If you include screenshots in this README for the theme listing page, use absolute GitHub image URLs rather than relative paths.
 
 ## Licence
 

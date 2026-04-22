@@ -12,8 +12,22 @@ document.addEventListener("DOMContentLoaded", function () {
       toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
 
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        nav.classList.remove("aw-nav--open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
     document.addEventListener("click", function (e) {
       if (!toggle.contains(e.target) && !nav.contains(e.target)) {
+        nav.classList.remove("aw-nav--open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
         nav.classList.remove("aw-nav--open");
         toggle.setAttribute("aria-expanded", "false");
       }

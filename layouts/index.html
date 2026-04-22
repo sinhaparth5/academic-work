@@ -1,7 +1,7 @@
 {{ define "main" }}
 <main class="aw-shell">
   <section class="aw-home-intro">
-    <p class="aw-eyebrow">Academic Template</p>
+    <p class="aw-eyebrow">Academic Work</p>
     <h1 class="aw-home-intro__title">{{ site.Title }}</h1>
     {{ with site.Params.intro }}<p class="aw-home-intro__desc">{{ . }}</p>{{ end }}
   </section>
@@ -14,7 +14,7 @@
     {{ partial "home-section.html" (dict "section" "research" "label" "Research" "summary" "Publications, preprints, talks, and ongoing academic work.") }}
     {{ partial "home-section.html" (dict "section" "notes" "label" "Notes" "summary" "Working notes, reading logs, and lecture material.") }}
     {{ partial "home-section.html" (dict "section" "library" "label" "Library" "summary" "Downloadable documents, appendices, PDFs, and related files.") }}
-    {{ partial "home-section.html" (dict "section" "projects" "label" "Projects" "summary" "Software, experiments, and side work around your research.") }}
+    {{ partial "home-section.html" (dict "section" "projects" "label" "Projects" "summary" "Software, experiments, and research-adjacent side work.") }}
   </div>
 </main>
 {{ end }}

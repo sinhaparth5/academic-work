@@ -3,6 +3,11 @@ languageCode = "en-gb"
 title = "Academic Work"
 enableRobotsTXT = true
 
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.122.0"
+
 [sitemap]
   changefreq = "weekly"
   filename = "sitemap.xml"

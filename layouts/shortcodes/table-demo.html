@@ -1,0 +1,13 @@
+{{ $variant := .Get "variant" | default "default" }}
+{{ $title := .Get "title" | default "Table Example" }}
+{{ $desc := .Get "desc" }}
+<section class="aw-demo aw-demo--table">
+  <div class="aw-demo__header">
+    <p class="aw-eyebrow">Table</p>
+    <h2 class="aw-demo__title">{{ $title }}</h2>
+    {{ with $desc }}<p class="aw-demo__desc">{{ . }}</p>{{ end }}
+  </div>
+  <div class="aw-table-demo aw-table-demo--{{ $variant }}">
+    {{ .Inner | markdownify }}
+  </div>
+</section>

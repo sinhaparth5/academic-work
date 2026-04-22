@@ -2,15 +2,24 @@
 {{ if gt (len $pages) 0 }}
   <div class="aw-list">
     {{ range $pages }}
+      {{ $metaText := slice }}
+      {{ with .Date }}{{ $metaText = $metaText | append (.Format "Jan 2006") }}{{ end }}
+      {{ with .Params.authors }}{{ $metaText = $metaText | append (delimit . ", ") }}{{ end }}
+      {{ with .Params.publication }}{{ $metaText = $metaText | append . }}{{ end }}
+      {{ with .Params.series }}{{ $metaText = $metaText | append . }}{{ end }}
       <article class="aw-card">
         <div class="aw-card__meta">
-          {{ with .Date }}<time datetime="{{ .Format `2006-01-02` }}">{{ .Format "Jan 2006" }}</time>{{ end }}
-          {{ with .Params.publication }}<span>{{ . }}</span>{{ end }}
-          {{ with .Params.series }}<span>{{ . }}</span>{{ end }}
+          {{ range $metaText }}<span>{{ . }}</span>{{ end }}
         </div>
         <div>
           <h2 class="aw-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-          {{ with .Summary | plainify }}<p class="aw-card__summary">{{ . }}</p>{{ end }}
+          {{ with .Params.summary }}
+            <p class="aw-card__summary">{{ . | plainify }}</p>
+          {{ else }}
+            {{ with .Plain }}
+              <p class="aw-card__summary">{{ . | plainify | truncate 220 }}</p>
+            {{ end }}
+          {{ end }}
           {{ with .Params.tags }}
             <p class="aw-card__tags">
               {{ range . }}<span class="aw-card__tag">{{ . }}</span>{{ end }}

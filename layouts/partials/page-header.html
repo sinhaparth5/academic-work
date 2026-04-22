@@ -1,0 +1,5 @@
+<header class="aw-page-header">
+  {{ with .eyebrow }}<p class="aw-eyebrow">{{ . }}</p>{{ end }}
+  <h1 class="aw-page-header__title">{{ .page.Title }}</h1>
+  {{ with .page.Params.summary }}<p class="aw-page-header__desc">{{ . }}</p>{{ end }}
+</header>

@@ -12,7 +12,7 @@ links:
   - label: "PDF"
     url: "/files/main.pdf"
   - label: "Code"
-    url: "https://github.com/example/adapraft"
+    url: "/projects/~/adaptraft/"
 ---
 
 ## Abstract

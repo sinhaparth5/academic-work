@@ -11,6 +11,10 @@ DistBench is a benchmarking harness for evaluating distributed consensus protoco
 **Language:** Python + shell  
 **Status:** Stable
 
+{{< callout tone="note" title="Benchmarking Page Pattern" >}}
+Benchmarking tools benefit from concise feature bullets, one or two commands, and a short explanation of what the output is for.
+{{< /callout >}}
+
 ## Features
 
 - Pluggable protocol backend: swap in Raft, PBFT, HotStuff, or any gRPC-based implementation
@@ -28,6 +32,6 @@ distbench run --config experiments/raft-wan.yaml
 distbench report results/ --output report.html
 ```
 
-## Source
+## Repository note
 
-[github.com/example/distbench](https://github.com/example/distbench)
+In a real project page, this section would link to the public repository, package index entry, or benchmark documentation.

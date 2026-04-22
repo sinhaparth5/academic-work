@@ -11,6 +11,10 @@ tags: ["teaching", "distributed systems", "graduate"]
 **Term:** Spring Term 2024  
 **Format:** Eight weekly tutorials (groups of 4–6 students)
 
+{{< callout tone="warning" title="Permissions" >}}
+Teaching pages often need a short note clarifying which materials can be shared publicly and which remain behind an institutional course page.
+{{< /callout >}}
+
 ## Topics covered
 
 1. Time and ordering — logical clocks, vector clocks, causality

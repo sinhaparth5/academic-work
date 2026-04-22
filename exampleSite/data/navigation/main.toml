@@ -3,6 +3,10 @@ name = "About"
 url  = "/about/"
 
 [[items]]
+name = "Theme"
+url  = "/theme/"
+
+[[items]]
 name = "Research"
 url  = "/research/"
 

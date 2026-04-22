@@ -6,23 +6,41 @@
         <a class="aw-back-link" href="{{ .RelPermalink }}">← {{ .Title }}</a>
       {{ end }}
     {{ end }}
-    <p class="aw-eyebrow">{{ .Section }}</p>
-    <h1>{{ .Title }}</h1>
-    {{ with .Date }}<p class="aw-single__meta"><time datetime="{{ .Format `2006-01-02` }}">{{ .Format "2 January 2006" }}</time></p>{{ end }}
-    {{ with .Params.links }}
-    <div class="aw-doc-links">
-      {{ range . }}
-        {{ $href := cond (hasPrefix .url "http") .url (.url | relURL) }}
-        <a class="aw-doc-link" href="{{ $href }}">{{ .label }}</a>
+    {{ $sectionLabel := .Section | humanize }}
+    {{ with .CurrentSection.Title }}{{ $sectionLabel = . }}{{ end }}
+    {{ with .Params.eyebrow }}{{ $sectionLabel = . }}{{ end }}
+    {{ if eq $sectionLabel "" }}{{ $sectionLabel = "Page" }}{{ end }}
+    {{ $metaText := slice }}
+    {{ with .Date }}{{ $metaText = $metaText | append (.Format "2 January 2006") }}{{ end }}
+    {{ with .Params.authors }}{{ $metaText = $metaText | append (delimit . ", ") }}{{ end }}
+    {{ with .Params.publication }}{{ $metaText = $metaText | append . }}{{ end }}
+    {{ with .Params.series }}{{ $metaText = $metaText | append . }}{{ end }}
+    <header class="aw-single-header">
+      <p class="aw-eyebrow">{{ $sectionLabel }}</p>
+      <h1>{{ .Title }}</h1>
+      {{ if gt (len $metaText) 0 }}
+        <p class="aw-single__meta">{{ delimit $metaText " · " }}</p>
       {{ end }}
-    </div>
-    {{ end }}
-    {{ with .Params.file }}
-    <div class="aw-doc-links">
-      {{ $href := cond (hasPrefix . "http") . (. | relURL) }}
-      <a class="aw-doc-link" href="{{ $href }}">Download PDF</a>
-    </div>
-    {{ end }}
+      {{ if or .Params.links .Params.file }}
+        <div class="aw-doc-links">
+          {{ range .Params.links }}
+            {{ $href := cond (hasPrefix .url "http") .url (.url | relURL) }}
+            <a class="aw-doc-link" href="{{ $href }}">{{ .label }}</a>
+          {{ end }}
+          {{ with .Params.file }}
+            {{ $href := cond (hasPrefix . "http") . (. | relURL) }}
+            <a class="aw-doc-link" href="{{ $href }}">Download PDF</a>
+          {{ end }}
+        </div>
+      {{ end }}
+      {{ with .Params.tags }}
+        <p class="aw-single__taxonomy">
+          {{ range . }}
+            <a class="aw-single__tag" href="{{ printf "/tags/%s/" (. | urlize) | relURL }}">#{{ . }}</a>
+          {{ end }}
+        </p>
+      {{ end }}
+    </header>
     {{ .Content }}
   </article>
 </main>

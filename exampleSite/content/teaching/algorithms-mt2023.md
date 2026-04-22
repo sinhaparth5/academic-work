@@ -11,6 +11,10 @@ tags: ["teaching", "algorithms", "undergraduate"]
 **Term:** Autumn Term 2023  
 **Format:** Six fortnightly tutorials (pairs)
 
+{{< callout tone="tip" title="Teaching Page Pattern" >}}
+Teaching entries should make the role, cohort, format, and scope visible immediately so readers can scan them quickly.
+{{< /callout >}}
+
 ## Topics covered
 
 1. Asymptotic analysis — O, Ω, Θ notation; recurrence relations; Master theorem
@@ -23,3 +27,15 @@ tags: ["teaching", "algorithms", "undergraduate"]
 ## Assessment
 
 Students submitted written problem sheets before each tutorial. I marked these and used them as the basis for discussion. Final examination is set and marked by the course lecturer.
+
+{{< table-demo
+  variant="soft"
+  title="Example Teaching Breakdown"
+  desc="A lighter table variation works well for teaching summaries where the content is structured but not data-heavy."
+>}}
+| Area | Focus | Format |
+| --- | --- | --- |
+| Analysis | Recurrences, asymptotics | Tutorial discussion |
+| Graphs | Traversal, shortest paths | Problem sheet |
+| Dynamic programming | LCS, knapsack | Worked examples |
+{{< /table-demo >}}

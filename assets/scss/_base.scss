@@ -26,6 +26,12 @@ img, svg, video {
   max-width: 100%;
 }
 
+.aw-prose img {
+  margin: 1.5rem 0;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
 a {
   color: inherit;
   text-decoration-color: var(--line);
@@ -37,8 +43,18 @@ a:hover {
   text-decoration-color: var(--text);
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--label);
+  outline-offset: 3px;
+}
+
 p, ul, ol, blockquote {
   margin: 0 0 1.25rem;
+}
+
+ul, ol {
+  padding-left: 1.25rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -92,6 +108,36 @@ pre {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.75rem;
+  font-size: var(--step--1);
+}
+
+th, td {
+  padding: 0.8rem 0.9rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+thead th {
+  border-bottom: 1px solid var(--line);
+}
+
+tbody td {
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
 }
 
 blockquote {

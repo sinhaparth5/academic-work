@@ -1,13 +1,13 @@
 name        = "Academic Work"
 license     = "MIT"
-licenselink = "https://github.com/USERNAME/academic-work/blob/main/LICENSE"
+licenselink = "https://github.com/sinhaparth5/academic-work/blob/main/LICENSE"
 description = "A clean, minimal Hugo theme for academics, researchers, and scholars. Ships with sections for research, notes, library, projects, and teaching."
-homepage    = "https://github.com/USERNAME/academic-work"
-demosite    = ""
+homepage    = "https://github.com/sinhaparth5/academic-work"
+demosite    = "https://academic-works.astrareconslabs.com/"
 tags        = ["academic", "research", "minimal", "portfolio", "personal", "blog", "responsive"]
 features    = ["scss", "responsive", "accessible", "minimal"]
 min_version = "0.122.0"
 
 [author]
-  name     = ""
-  homepage = ""
+  name     = "Parth Sinha"
+  homepage = "https://github.com/sinhaparth5"

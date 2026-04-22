@@ -1,0 +1,8 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "" }}
+{{ $caption := .Get "caption" }}
+{{ $size := .Get "size" | default "regular" }}
+<figure class="aw-figure aw-figure--{{ $size }}">
+  <img class="aw-figure__image" src="{{ $src | relURL }}" alt="{{ $alt }}">
+  {{ with $caption }}<figcaption class="aw-figure__caption">{{ . }}</figcaption>{{ end }}
+</figure>

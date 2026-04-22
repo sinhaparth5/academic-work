@@ -14,13 +14,13 @@ enableRobotsTXT = true
   tagline      = "Computer Science · Researcher"
   images       = ["/images/cover.png"]
   mainSections = ["research", "notes", "library", "projects"]
-  email        = "hello@example.org"
+  email        = ""
   intro        = "I am a researcher in Computer Science. My work focuses on distributed systems, machine learning efficiency, and the formal foundations of concurrent computation."
 
 [[params.social]]
   name = "GitHub"
   icon = "/images/socials/github-svgrepo-com.svg"
-  url  = "https://github.com/example"
+  url  = "https://github.com/sinhaparth5"
 
 [[params.social]]
   name = "GitLab"

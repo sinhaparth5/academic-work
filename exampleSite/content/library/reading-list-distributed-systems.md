@@ -7,6 +7,10 @@ summary: "A curated reading list for anyone starting research in distributed sys
 
 An opinionated list of what to read when getting into distributed systems research, loosely ordered by where to start.
 
+{{< callout tone="note" title="How to Use This Page" >}}
+This kind of library page works well when you want a document-like resource that is still navigable on the web rather than just a file download.
+{{< /callout >}}
+
 ## Foundational papers
 
 - Lamport (1978) — Time, clocks, and the ordering of events

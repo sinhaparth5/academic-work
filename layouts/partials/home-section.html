@@ -16,7 +16,13 @@
         <article class="aw-home-entry">
           {{ with .Date }}<p class="aw-home-entry__meta"><time datetime="{{ .Format `2006-01-02` }}">{{ .Format "2 Jan 2006" }}</time></p>{{ end }}
           <h3 class="aw-home-entry__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-          {{ with .Summary | plainify }}<p class="aw-home-entry__summary">{{ . }}</p>{{ end }}
+          {{ with .Params.summary }}
+            <p class="aw-home-entry__summary">{{ . | plainify }}</p>
+          {{ else }}
+            {{ with .Plain }}
+              <p class="aw-home-entry__summary">{{ . | plainify | truncate 180 }}</p>
+            {{ end }}
+          {{ end }}
         </article>
       {{ end }}
     {{ else }}

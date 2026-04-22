@@ -1,12 +1,7 @@
 {{ define "main" }}
 <main class="aw-shell">
-  <header class="aw-page-header">
-    <h1 class="aw-page-header__title">{{ .Title }}</h1>
-    {{ with .Params.summary }}<p class="aw-page-header__desc">{{ . }}</p>{{ end }}
-  </header>
-  <div class="aw-prose">
-    {{ .Content }}
-  </div>
+  {{ partial "page-header.html" (dict "page" .) }}
+  {{ partial "page-content.html" . }}
   {{ partial "section-list.html" . }}
 </main>
 {{ end }}

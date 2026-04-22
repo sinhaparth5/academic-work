@@ -10,8 +10,6 @@ tags: ["distributed systems", "BFT", "consensus", "survey"]
 links:
   - label: "PDF"
     url: "/files/bft-survey-2024.pdf"
-  - label: "arXiv"
-    url: "https://arxiv.org/abs/example"
 ---
 
 ## Abstract

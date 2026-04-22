@@ -11,6 +11,10 @@ AdaptRaft extends the standard Raft consensus protocol with a lightweight contex
 **Language:** Go  
 **Status:** Active — feedback and contributions welcome
 
+{{< callout tone="tip" title="Project Page Pattern" >}}
+Project pages should explain the problem, what the software does, and how someone would start evaluating it. They do not need to look like product landing pages.
+{{< /callout >}}
+
 ## What it does
 
 Standard Raft uses static election and heartbeat timeouts set at deployment time. In geo-distributed clusters, network conditions vary significantly by time of day and traffic load. AdaptRaft addresses this by:
@@ -24,7 +28,7 @@ The learner is fully decoupled from the Raft safety logic and can be disabled wi
 ## Getting started
 
 ```bash
-git clone https://github.com/example/adapraft
+git clone https://github.com/yourname/adapraft
 cd adapraft
 go test ./...
 go run ./cmd/demo --nodes 5 --latency-profile wan
@@ -32,6 +36,6 @@ go run ./cmd/demo --nodes 5 --latency-profile wan
 
 Configuration is via a TOML file; see `config/example.toml`.
 
-## Source
+## Repository note
 
-[github.com/example/adapraft](https://github.com/example/adapraft)
+In a real project page, this section would link to the public repository, issue tracker, and documentation.
