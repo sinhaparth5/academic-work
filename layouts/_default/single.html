@@ -9,6 +9,20 @@
     <p class="aw-eyebrow">{{ .Section }}</p>
     <h1>{{ .Title }}</h1>
     {{ with .Date }}<p class="aw-single__meta"><time datetime="{{ .Format `2006-01-02` }}">{{ .Format "2 January 2006" }}</time></p>{{ end }}
+    {{ with .Params.links }}
+    <div class="aw-doc-links">
+      {{ range . }}
+        {{ $href := cond (hasPrefix .url "http") .url (.url | absURL) }}
+        <a class="aw-doc-link" href="{{ $href }}">{{ .label }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+    {{ with .Params.file }}
+    <div class="aw-doc-links">
+      {{ $href := cond (hasPrefix . "http") . (. | absURL) }}
+      <a class="aw-doc-link" href="{{ $href }}">Download PDF</a>
+    </div>
+    {{ end }}
     {{ .Content }}
   </article>
 </main>

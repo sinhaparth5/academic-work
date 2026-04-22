@@ -7,5 +7,3 @@ file: "/files/main.pdf"
 ---
 
 Full academic CV, updated November 2024. Includes education, publications, conference talks, awards, and academic service.
-
-[Download PDF](/files/main.pdf)

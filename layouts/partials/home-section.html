@@ -6,7 +6,9 @@
   <div class="aw-home-section__intro">
     <h2 class="aw-home-section__heading">{{ $label }}</h2>
     <p class="aw-home-section__desc">{{ $summary }}</p>
-    <a class="aw-home-section__link" href="{{ printf "/%s/" $section | relURL }}" aria-label="View all {{ $label }}">View all</a>
+    {{ $sectionPage := site.GetPage (printf "/%s/" $section) }}
+    {{ $sectionHref := cond (ne $sectionPage nil) $sectionPage.RelPermalink (printf "/%s/" $section | relURL) }}
+    <a class="aw-home-section__link" href="{{ $sectionHref }}" aria-label="View all {{ $label }}">View all</a>
   </div>
   <div class="aw-home-section__body">
     {{ if gt (len $pages) 0 }}

@@ -16,6 +16,18 @@
               {{ range . }}<span class="aw-card__tag">{{ . }}</span>{{ end }}
             </p>
           {{ end }}
+          {{ if or .Params.links .Params.file }}
+          <p class="aw-card__links">
+            {{ range .Params.links }}
+              {{ $href := cond (hasPrefix .url "http") .url (.url | absURL) }}
+              <a class="aw-card__link" href="{{ $href }}">{{ .label }}</a>
+            {{ end }}
+            {{ with .Params.file }}
+              {{ $href := cond (hasPrefix . "http") . (. | absURL) }}
+              <a class="aw-card__link" href="{{ $href }}">PDF</a>
+            {{ end }}
+          </p>
+          {{ end }}
         </div>
       </article>
     {{ end }}

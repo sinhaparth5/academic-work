@@ -11,5 +11,3 @@ Undergraduate thesis submitted in partial fulfilment of the MEng in Computer Sci
 **Abstract.** Byzantine fault-tolerant (BFT) consensus protocols provide safety and liveness guarantees even when up to one-third of participants behave arbitrarily. This thesis implements and systematically benchmarks three representative BFT protocols — PBFT, HotStuff, and Tendermint — in a simulated wide-area network environment.
 
 We find that HotStuff achieves the best throughput at scale due to its linear message complexity, while PBFT retains a latency advantage at small replica counts. Tendermint's simple design and explicit timeout-based liveness make it the most straightforward to reason about in practice. We discuss the implications for protocol selection in production blockchain and replication systems.
-
-[Download PDF](/files/main.pdf)
