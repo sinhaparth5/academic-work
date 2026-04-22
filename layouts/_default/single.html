@@ -12,14 +12,14 @@
     {{ with .Params.links }}
     <div class="aw-doc-links">
       {{ range . }}
-        {{ $href := cond (hasPrefix .url "http") .url (.url | absURL) }}
+        {{ $href := cond (hasPrefix .url "http") .url (.url | relURL) }}
         <a class="aw-doc-link" href="{{ $href }}">{{ .label }}</a>
       {{ end }}
     </div>
     {{ end }}
     {{ with .Params.file }}
     <div class="aw-doc-links">
-      {{ $href := cond (hasPrefix . "http") . (. | absURL) }}
+      {{ $href := cond (hasPrefix . "http") . (. | relURL) }}
       <a class="aw-doc-link" href="{{ $href }}">Download PDF</a>
     </div>
     {{ end }}

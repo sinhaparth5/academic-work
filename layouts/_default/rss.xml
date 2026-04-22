@@ -9,7 +9,7 @@
 {{- $limit := .Site.Config.Services.RSS.Limit -}}
 {{- if ge $limit 1 -}}{{ $pages = $pages | first $limit }}{{- end -}}
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
-<?xml-stylesheet type="text/xsl" href="{{ `/feed.xsl` | absURL }}"?>
+<?xml-stylesheet type="text/xsl" href="{{ `/feed.xsl` | relURL | absURL }}"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>{{ if not .IsHome }}{{ .Title }} — {{ end }}{{ site.Title }}</title>
