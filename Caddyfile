@@ -29,7 +29,8 @@
 		# - jsDelivr for KaTeX CSS + JS
 		# - KaTeX fonts are also fetched from jsDelivr
 		# - unsafe-inline on script-src required for KaTeX onload= attribute
-		Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data:; manifest-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'"
+		# - unsafe-inline on style-src required because KaTeX injects inline style attributes at runtime
+		Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data:; manifest-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'"
 	}
 
 	# Fingerprinted CSS and JS are immutable

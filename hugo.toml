@@ -89,6 +89,8 @@ enableRobotsTXT = true
   404      = ["HTML"]
 
 [markup]
+  [markup.highlight]
+    noClasses = false
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = false
