@@ -1,0 +1,7 @@
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>{{ site.Title }}.</p>
+    <p>{{ site.Params.description }}</p>
+    {{ with site.Params.email }}<p><a href="mailto:{{ . }}">{{ . }}</a></p>{{ end }}
+  </div>
+</footer>

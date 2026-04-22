@@ -1,0 +1,27 @@
+{{ $section := .section }}
+{{ $label := .label }}
+{{ $summary := .summary }}
+{{ $pages := first 3 (where site.RegularPages "Section" $section).ByDate.Reverse }}
+<section class="home-section">
+  <div class="home-section__intro">
+    <p class="eyebrow">{{ $label }}</p>
+    <h2><a href="{{ printf "/%s/" $section | relURL }}">{{ $label }}</a></h2>
+    <p>{{ $summary }}</p>
+  </div>
+  <div class="home-section__body">
+    {{ if gt (len $pages) 0 }}
+      {{ range $pages }}
+        <article class="home-entry">
+          <p class="home-entry__meta">{{ with .Date }}<time datetime="{{ .Format `2006-01-02` }}">{{ .Format "2 Jan 2006" }}</time>{{ end }}</p>
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ with .Summary | plainify }}<p>{{ . }}</p>{{ end }}
+        </article>
+      {{ end }}
+    {{ else }}
+      <article class="home-entry home-entry--placeholder">
+        <h3>No entries yet</h3>
+        <p>This section is ready for content.</p>
+      </article>
+    {{ end }}
+  </div>
+</section>

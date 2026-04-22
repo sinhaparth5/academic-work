@@ -1,0 +1,16 @@
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="{{ `/` | relURL }}" aria-label="{{ site.Title }}">
+      <span class="site-brand__mark">AW</span>
+      <span class="site-brand__text">
+        <strong>{{ site.Title }}</strong>
+        {{ with site.Params.tagline }}<small>{{ . }}</small>{{ end }}
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      {{ range hugo.Data.navigation.main.items }}
+        <a class="site-nav__link{{ if eq $.RelPermalink .url }} is-active{{ end }}" href="{{ .url | relURL }}">{{ .name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>

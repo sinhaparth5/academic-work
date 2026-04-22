@@ -1,0 +1,10 @@
+{{ define "main" }}
+<main class="site-shell">
+  <article class="prose">
+    <p class="eyebrow">{{ .Section }}</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Date }}<p class="single-meta"><time datetime="{{ .Format `2006-01-02` }}">{{ .Format "2 Jan 2006" }}</time></p>{{ end }}
+    {{ .Content }}
+  </article>
+</main>
+{{ end }}

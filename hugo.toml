@@ -1,3 +1,48 @@
-baseURL = 'https://example.org/'
-locale = 'en-us'
-title = 'My New Hugo Project'
+baseURL = "https://example.org/"
+languageCode = "en-gb"
+title = "Academic Work"
+enableRobotsTXT = true
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[params]
+  description = "A simple and minimal Hugo template for academic work."
+  author = "Your Name"
+  tagline = "Research, notes, writing, and documents in one place."
+  images = ["/images/cover.png"]
+  mainSections = ["research", "notes", "library", "projects", "teaching"]
+  email = "hello@example.org"
+  intro = "A clean, text-first Hugo template for research outputs, long-form notes, resources, and academic portfolios."
+  [params.seo]
+    siteName = "Academic Work"
+    twitterHandle = ""
+    defaultRobots = "index,follow"
+
+[permalinks]
+  notes = "/notes/:slug/"
+  research = "/research/:slug/"
+  library = "/library/:slug/"
+  projects = "/projects/:slug/"
+  teaching = "/teaching/:slug/"
+
+[outputs]
+  home = ["HTML"]
+  section = ["HTML"]
+  page = ["HTML"]
+  taxonomy = ["HTML"]
+  term = ["HTML"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+
+[taxonomies]
+  tag = "tags"
+
+[imaging]
+  quality = 85
+  resampleFilter = "Lanczos"

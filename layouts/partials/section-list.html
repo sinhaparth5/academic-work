@@ -1,0 +1,25 @@
+{{ $pages := .Pages.ByDate.Reverse }}
+{{ if gt (len $pages) 0 }}
+  <div class="content-list">
+    {{ range $pages }}
+      <article class="content-card">
+        <p class="content-card__meta">
+          {{ with .Date }}<time datetime="{{ .Format `2006-01-02` }}">{{ .Format "2 Jan 2006" }}</time>{{ end }}
+          {{ with .Params.publication }}<span>{{ . }}</span>{{ end }}
+          {{ with .Params.series }}<span>{{ . }}</span>{{ end }}
+        </p>
+        <h2 class="content-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        {{ with .Summary | plainify }}<p class="content-card__summary">{{ . }}</p>{{ end }}
+        {{ with .Params.tags }}
+          <p class="content-card__tags">
+            {{ range . }}<span>{{ . }}</span>{{ end }}
+          </p>
+        {{ end }}
+      </article>
+    {{ end }}
+  </div>
+{{ else }}
+  <div class="empty-state">
+    <p>No entries yet.</p>
+  </div>
+{{ end }}
