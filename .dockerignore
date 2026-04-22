@@ -1,0 +1,10 @@
+.git
+.github
+public
+resources/_gen
+node_modules
+designs
+images/screenshot.png
+images/tn.png
+*.md
+!exampleSite/**/*.md
