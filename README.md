@@ -1,41 +1,69 @@
 # Academic Work
 
-A clean, minimal Hugo theme for academics, researchers, and scholars. Built around a text-first philosophy — your writing and research take centre stage.
+Academic Work is a clean Hugo theme for researchers, academics, and technical writers. It is built for publishing papers, notes, teaching material, projects, and downloadable documents with a quiet editorial layout.
 
-The repository includes a complete `exampleSite/` and a dedicated `Theme` reference page for checking palette, spacing, grids, tables, code blocks, and LaTeX rendering in one place.
+The theme includes a complete `exampleSite/` so you can preview the design before using it in your own Hugo site.
+
+## Screenshots
+
+![Academic Work home page](assets/images/pics/Screenshot%202026-04-23%20165810.png)
+
+| Research | Notes | Article |
+|----------|-------|---------|
+| ![Research listing](assets/images/pics/Screenshot%202026-04-23%20165852.png) | ![Notes listing](assets/images/pics/Screenshot%202026-04-23%20165919.png) | ![Article page](assets/images/pics/Screenshot%202026-04-23%20165939.png) |
+
+| Library | Projects | Theme reference |
+|---------|----------|-----------------|
+| ![Library page](assets/images/pics/Screenshot%202026-04-23%20170050.png) | ![Projects page](assets/images/pics/Screenshot%202026-04-23%20170110.png) | ![Theme reference page](assets/images/pics/Screenshot%202026-04-23%20170131.png) |
 
 ## Features
 
-- Six content sections out of the box: Research, Notes, Library, Projects, Teaching, About
-- Numbered home sections with a Swiss editorial layout
-- Fluid typographic scale using self-hosted Source Serif 4
-- WCAG 2.2 AA-oriented accessibility: landmarks, skip link, keyboard focus states, current-page state, reduced-motion support, and AA colour contrast
-- BEM-namespaced CSS (`aw-` prefix) — zero class conflicts
-- Responsive down to 320 px
-- Dark mode via `prefers-color-scheme`
-- LaTeX rendering via KaTeX (opt-in per page or globally)
-- PDF links open in a new tab with a PDF badge automatically
-- RSS feed with browser-readable XSLT stylesheet
-- Tag taxonomy with tag cloud index
-- Social links with SVG icons (GitHub, GitLab, X, Instagram, Facebook, WhatsApp, Bitbucket)
-- SEO meta, JSON-LD schema, Open Graph, and Twitter Card tags included
-- Static JSON search index at `/search.json`
-- Responsive Markdown and figure images using Hugo image processing
-- Dependency-light validation scripts for content, output HTML, accessibility, and performance checks
-- Print stylesheet — hides navigation, expands external links
-- Sitemap and robots.txt support
+- Academic sections for research, notes, library, projects, teaching, and about pages
+- Responsive layout for mobile, tablet, and desktop
+- Self-hosted Source Serif 4 typography
+- Dark mode through `prefers-color-scheme`
+- Accessible landmarks, skip link, keyboard focus states, and current-page navigation
+- KaTeX support for inline and display math
+- RSS, sitemap, robots.txt, Open Graph, Twitter Card, and JSON-LD metadata
+- Tag pages and tag index
+- PDF link styling with new-tab context for screen readers
+- Static `/search.json` output for adding client-side search
+- SCSS structure with `aw-` class prefixing
+
+## Requirements
+
+- Hugo Extended `0.122.0` or newer
+
+## Preview The Example Site
+
+Run this from the repository root:
+
+```bash
+hugo server --config exampleSite/hugo.toml --contentDir exampleSite/content
+```
+
+If you are currently inside `public/`, move back to the repository root first:
+
+```bash
+cd ..
+hugo server --config exampleSite/hugo.toml --contentDir exampleSite/content
+```
 
 ## Installation
 
-### As a Git submodule (recommended)
+Add the theme as a Git submodule:
 
 ```bash
 git submodule add https://github.com/sinhaparth5/academic-work themes/academic-work
 ```
 
-Add `theme = "academic-work"` to your `hugo.toml`.
+Then set the theme in your site config:
 
-### As a Hugo module
+```toml
+theme = "academic-work"
+```
+
+You can also use it as a Hugo module:
 
 ```toml
 [module]
@@ -43,212 +71,172 @@ Add `theme = "academic-work"` to your `hugo.toml`.
     path = "github.com/sinhaparth5/academic-work"
 ```
 
-## Quick start
+## Basic Configuration
 
-To preview the showcase content from this repository, run:
-
-```bash
-hugo server --config exampleSite/hugo.toml --contentDir exampleSite/content
-```
-
-If you are using the theme in your own site, copy the structure of `exampleSite/` into your project and run `hugo server` there.
-
-## Configuration
-
-Full showcase configuration lives in [`exampleSite/hugo.toml`](exampleSite/hugo.toml). Typical site parameters:
+See [exampleSite/hugo.toml](exampleSite/hugo.toml) for the full demo configuration.
 
 ```toml
+baseURL = "https://example.com/"
+languageCode = "en"
+title = "Your Name"
+theme = "academic-work"
+enableRobotsTXT = true
+disableHugoGeneratorInject = true
+
 [params]
-  description = "Your site description for SEO."
-  author      = "Your Name"
-  tagline     = "Department · Institution"
-  email       = "you@institution.edu"
-  intro       = "A short paragraph shown on the homepage below the title."
-
-  # Open Graph / Twitter card cover image (place in static/)
+  description = "Research, writing, teaching, and projects."
+  author = "Your Name"
+  tagline = "Department · Institution"
+  email = "you@example.com"
+  intro = "A short introduction shown on the home page."
   images = ["/images/cover.png"]
-
-  # Enable KaTeX LaTeX rendering site-wide (or set math = true in page front matter)
   math = false
-
-  # Which sections appear on the home page grid
   mainSections = ["research", "notes", "library", "projects"]
 
   [params.seo]
-    siteName      = "Your Name"
-    twitterHandle = "@handle"
+    siteName = "Your Name"
+    twitterHandle = "@yourhandle"
     defaultRobots = "index,follow"
-
-[[params.social]]
-  name = "GitHub"
-  icon = "/images/socials/github-svgrepo-com.svg"
-  url  = "https://github.com/yourhandle"
+    imageWidth = 1200
+    imageHeight = 630
 ```
 
-### Navigation
+## Navigation
 
 Edit `data/navigation/main.toml`:
 
 ```toml
 [[items]]
 name = "Research"
-url  = "/research/"
+url = "/research/"
+
+[[items]]
+name = "Notes"
+url = "/notes/"
 ```
 
-The showcase navigation in this repository also includes a `Theme` page in `exampleSite/content/theme.md`.
+## Content Sections
 
-### Content sections
+| Section | Archetype | Use |
+|---------|-----------|-----|
+| `research` | `paper` | Publications, preprints, talks, and working papers |
+| `notes` | `note` | Reading notes, lecture notes, and drafts |
+| `library` | `library` | PDFs, appendices, CVs, and datasets |
+| `projects` | `project` | Software, experiments, and research tools |
+| `teaching` | `teaching` | Courses, syllabi, and teaching material |
+| `about` | `default` | Profile or biography page |
 
-| Section    | Archetype   | Typical use                              |
-|------------|-------------|------------------------------------------|
-| `research` | `paper`     | Papers, preprints, talks, ongoing work   |
-| `notes`    | `note`      | Reading notes, lecture notes, drafts     |
-| `library`  | `library`   | PDFs, appendices, data sets              |
-| `projects` | `project`   | Software, experiments, side work         |
-| `teaching` | `teaching`  | Courses, syllabi, materials              |
-| `about`    | `default`   | Single about page                        |
-
-Create content with the correct archetype:
+Create new content with Hugo:
 
 ```bash
 hugo new research/my-paper.md
-hugo new notes/reading-notes.md
-hugo new library/appendix-a.md
-hugo new projects/my-tool.md
-hugo new teaching/ling-101.md
+hugo new notes/my-note.md
+hugo new library/my-document.md
+hugo new projects/my-project.md
+hugo new teaching/my-course.md
 ```
 
-### Front matter reference
+## Front Matter
 
-**Paper / Research**
+Research page:
+
 ```yaml
 ---
 title: "Paper Title"
 date: 2024-09-01
 summary: "One-sentence description."
 authors: ["Jane Smith", "John Doe"]
-publication: "Journal of Linguistics"
+publication: "Journal or Conference"
 year: 2024
-tags: ["syntax", "NLP"]
+tags: ["distributed systems", "consensus"]
 links:
   - label: "PDF"
     url: "/files/paper.pdf"
   - label: "Code"
-    url: "https://github.com/yourname/project-repo"
+    url: "https://github.com/example/project"
 ---
 ```
 
-**Note**
-```yaml
----
-title: "Note Title"
-date: 2024-11-15
-summary: ""
-tags: ["reading", "syntax"]
-series: "Syntax Readings"
----
-```
+Library item:
 
-**Library item**
 ```yaml
 ---
-title: "Document Title"
+title: "Curriculum Vitae"
 date: 2024-06-01
-summary: "What this document contains."
-file: "/files/document.pdf"
+summary: "Current academic CV."
+file: "/files/cv.pdf"
 ---
 ```
 
-### LaTeX / Math
+## Math
 
-KaTeX is loaded automatically when a page has `math = true` in its front matter, or when `math = true` is set globally under `[params]`.
+Enable KaTeX globally with:
 
-Use `$...$` for inline math and `$$...$$` for display (block) math:
+```toml
+[params]
+  math = true
+```
+
+Or enable it per page:
+
+```yaml
+---
+math: true
+---
+```
+
+Use standard inline and display math:
 
 ```markdown
-The energy–mass relation is $E = mc^2$.
+Inline math uses $E = mc^2$.
 
 $$
 \int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}
 $$
 ```
 
-Requires Hugo ≥ 0.122.0 (Goldmark passthrough extension).
+## Static Assets
 
-### Hugo version support
+Recommended paths:
 
-The theme declares Hugo version support in the root [`hugo.toml`](hugo.toml) using:
-
-```toml
-[module]
-  [module.hugoVersion]
-    extended = true
-    min = "0.122.0"
-```
-
-### SEO & PWA
-
-**robots.txt** is generated automatically (requires `enableRobotsTXT = true` in `hugo.toml`). It allows all crawlers and includes a `Sitemap:` directive pointing to your sitemap.
-
-**sitemap.xml** is generated automatically with smart priorities:
-
-| Page type | Priority | Frequency |
-|-----------|----------|-----------|
-| Homepage  | 1.0 | daily   |
-| Sections  | 0.8 | weekly  |
-| Pages     | 0.6 | monthly |
-| Tag pages | 0.4 | monthly |
-
-To exclude a page from the sitemap, add `noindex: true` to its front matter (this also sets the `robots` meta to `noindex,nofollow`).
-
-**Web App Manifest** (`/site.webmanifest`) is generated from your `hugo.toml` title and description. Place icon files at:
-
-```
+```text
 static/
   favicon.ico
+  files/
+    paper.pdf
   images/
-    cover.png             (1200×630 Open Graph / Twitter image)
+    cover.png
   icons/
     favicon-16x16.png
     favicon-32x32.png
-    apple-touch-icon.png   (180×180)
-    icon-192.png           (192×192)
-    icon-512.png           (512×512)
+    apple-touch-icon.png
+    icon-192.png
+    icon-512.png
 ```
 
-### Search index
+Social icons used by the demo live in `assets/images/socials/`.
 
-The theme generates `/search.json` as a static index for client-side search. Each item includes title, URL, section, summary, plain text content, tags, and date. Pages with `noindex: true` are excluded.
+## Validation
 
-### Responsive images
-
-Markdown images and the built-in `figure` shortcode are rendered with `srcset`, dimensions, lazy loading, and async decoding when the source image is available as a page resource or under `assets/`. Static fallback images still receive accessibility and loading attributes.
-
-### Quality checks
-
-Run the local validation suite before publishing:
+The repository includes a small validation suite:
 
 ```bash
 npm run validate
 ```
 
-This checks front matter, Markdown image alt text, local content links, generated JSON-LD, duplicate IDs, local output links, image dimensions, external-link safety, generator meta removal, and search index generation. The GitHub Actions workflow also builds the site, runs axe accessibility checks, and records a Lighthouse run.
+It checks content front matter, local links, generated output, image attributes, JSON-LD, and search index generation.
 
-### RSS
+## Theme Submission
 
-The feed is available at `/index.xml`. It renders as a styled page in browsers via a built-in XSLT stylesheet.
+For a Hugo Themes submission, make sure these files are present:
 
-## Screenshots
+```text
+images/screenshot.png
+images/tn.png
+```
 
-Place your screenshots at:
+Use the screenshots in `assets/images/pics/` as the source for those final listing images.
 
-- `images/screenshot.png` — 1500 × 1000 px, full-page view
-- `images/tn.png` — 900 × 600 px, thumbnail crop
-
-These are required for listing on [themes.gohugo.io](https://themes.gohugo.io).
-
-If you include screenshots in this README for the theme listing page, use absolute GitHub image URLs rather than relative paths.
-
-## Licence
+## License
 
 [MIT](LICENSE)
