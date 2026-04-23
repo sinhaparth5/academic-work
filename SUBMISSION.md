@@ -108,23 +108,36 @@ git push origin master
 
 ## 5. Submit To Hugo Themes
 
-Hugo themes are listed through the official `gohugoio/hugoThemes` repository.
+Hugo themes are listed through the official site builder repository:
+
+```text
+https://github.com/gohugoio/hugoThemesSiteBuilder
+```
+
+The current submission process is to add your theme repository URL to `themes.txt`.
 
 Steps:
 
-1. Fork the Hugo Themes repository:
+1. Fork the Hugo Themes Site Builder repository:
 
    ```text
-   https://github.com/gohugoio/hugoThemes
+   https://github.com/gohugoio/hugoThemesSiteBuilder
    ```
 
-2. Add your theme as a Git submodule in the fork:
+2. Clone your fork:
 
    ```bash
-   git submodule add https://github.com/sinhaparth5/academic-work.git academic-work
+   git clone https://github.com/YOUR_USERNAME/hugoThemesSiteBuilder.git
+   cd hugoThemesSiteBuilder
    ```
 
-3. Commit the submodule addition:
+3. Edit `themes.txt` and add the theme repository URL in lexicographical order:
+
+   ```text
+   github.com/sinhaparth5/academic-work
+   ```
+
+4. Commit the change:
 
    ```bash
    git add .
@@ -132,13 +145,13 @@ Steps:
    git push origin master
    ```
 
-4. Open a pull request from your fork to:
+5. Open a pull request from your fork to:
 
    ```text
-   gohugoio/hugoThemes
+   gohugoio/hugoThemesSiteBuilder
    ```
 
-5. In the pull request description, include:
+6. In the pull request description, include:
 
    ```markdown
    ## Theme
@@ -154,6 +167,8 @@ Steps:
    A minimal academic Hugo theme with research, notes, library, projects, teaching, accessibility-focused templates, KaTeX support, RSS, SEO metadata, and responsive layouts.
    ```
 
+The Netlify deploy preview must pass before the theme is accepted.
+
 ## 6. After Submitting
 
 Watch the pull request checks and reviewer comments. Common requested fixes are:
@@ -165,6 +180,8 @@ Watch the pull request checks and reviewer comments. Common requested fixes are:
 - Missing license
 - Missing `min_version`
 - Broken links in README or example content
+
+The theme site builder uses Hugo Modules and may use the latest release tag from your theme repository. If a preview says it cannot find `images/tn.png` or `images/screenshot.png`, make sure the images are committed and included in the latest release tag. If needed, create a new release tag after adding the images.
 
 After any fix, rerun:
 

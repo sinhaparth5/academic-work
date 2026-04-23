@@ -6,15 +6,15 @@ The theme includes a complete `exampleSite/` so you can preview the design befor
 
 ## Screenshots
 
-![Academic Work home page](assets/images/pics/Screenshot%202026-04-23%20165810.png)
+![Academic Work home page](https://raw.githubusercontent.com/sinhaparth5/academic-work/master/assets/images/pics/Screenshot%202026-04-23%20165810.png)
 
 | Research | Notes | Article |
 |----------|-------|---------|
-| ![Research listing](assets/images/pics/Screenshot%202026-04-23%20165852.png) | ![Notes listing](assets/images/pics/Screenshot%202026-04-23%20165919.png) | ![Article page](assets/images/pics/Screenshot%202026-04-23%20165939.png) |
+| ![Research listing](https://raw.githubusercontent.com/sinhaparth5/academic-work/master/assets/images/pics/Screenshot%202026-04-23%20165852.png) | ![Notes listing](https://raw.githubusercontent.com/sinhaparth5/academic-work/master/assets/images/pics/Screenshot%202026-04-23%20165919.png) | ![Article page](https://raw.githubusercontent.com/sinhaparth5/academic-work/master/assets/images/pics/Screenshot%202026-04-23%20165939.png) |
 
 | Library | Projects | Theme reference |
 |---------|----------|-----------------|
-| ![Library page](assets/images/pics/Screenshot%202026-04-23%20170050.png) | ![Projects page](assets/images/pics/Screenshot%202026-04-23%20170110.png) | ![Theme reference page](assets/images/pics/Screenshot%202026-04-23%20170131.png) |
+| ![Library page](https://raw.githubusercontent.com/sinhaparth5/academic-work/master/assets/images/pics/Screenshot%202026-04-23%20170050.png) | ![Projects page](https://raw.githubusercontent.com/sinhaparth5/academic-work/master/assets/images/pics/Screenshot%202026-04-23%20170110.png) | ![Theme reference page](https://raw.githubusercontent.com/sinhaparth5/academic-work/master/assets/images/pics/Screenshot%202026-04-23%20170131.png) |
 
 ## Features
 
