@@ -7,12 +7,13 @@
       {{ with .Params.authors }}{{ $metaText = $metaText | append (delimit . ", ") }}{{ end }}
       {{ with .Params.publication }}{{ $metaText = $metaText | append . }}{{ end }}
       {{ with .Params.series }}{{ $metaText = $metaText | append . }}{{ end }}
-      <article class="aw-card">
+      {{ $titleID := printf "entry-%s" (.RelPermalink | anchorize) }}
+      <article class="aw-card" aria-labelledby="{{ $titleID }}">
         <div class="aw-card__meta">
           {{ range $metaText }}<span>{{ . }}</span>{{ end }}
         </div>
         <div>
-          <h2 class="aw-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <h2 id="{{ $titleID }}" class="aw-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
           {{ with .Params.summary }}
             <p class="aw-card__summary">{{ . | plainify }}</p>
           {{ else }}
@@ -26,16 +27,18 @@
             </p>
           {{ end }}
           {{ if or .Params.links .Params.file }}
-          <p class="aw-card__links">
+            <nav class="aw-card__links" aria-label="Links for {{ .Title }}">
             {{ range .Params.links }}
               {{ $href := cond (hasPrefix .url "http") .url (.url | relURL) }}
-              <a class="aw-card__link" href="{{ $href }}">{{ .label }}</a>
+              {{ $isPDF := strings.HasSuffix (lower .url) ".pdf" }}
+              {{ $needsBadge := and $isPDF (ne (lower .label) "pdf") }}
+              <a class="aw-card__link" href="{{ $href }}"{{ if $isPDF }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .label }}{{ if $needsBadge }}<span class="aw-pdf-badge" aria-hidden="true">PDF</span>{{ end }}{{ if $isPDF }}<span class="aw-sr-only aw-new-tab-note"> (PDF, opens in a new tab)</span>{{ end }}</a>
             {{ end }}
             {{ with .Params.file }}
               {{ $href := cond (hasPrefix . "http") . (. | relURL) }}
-              <a class="aw-card__link" href="{{ $href }}">PDF</a>
+              <a class="aw-card__link" href="{{ $href }}" target="_blank" rel="noopener noreferrer">Download<span class="aw-pdf-badge" aria-hidden="true">PDF</span><span class="aw-sr-only aw-new-tab-note"> (PDF, opens in a new tab)</span></a>
             {{ end }}
-          </p>
+          </nav>
           {{ end }}
         </div>
       </article>

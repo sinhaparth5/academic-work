@@ -2,9 +2,9 @@
 {{ $label := .label }}
 {{ $summary := .summary }}
 {{ $pages := first 3 (where site.RegularPages "Section" $section).ByDate.Reverse }}
-<section class="aw-home-section">
+<section class="aw-home-section" aria-labelledby="home-section-{{ $section }}">
   <div class="aw-home-section__intro">
-    <h2 class="aw-home-section__heading">{{ $label }}</h2>
+    <h2 id="home-section-{{ $section }}" class="aw-home-section__heading">{{ $label }}</h2>
     <p class="aw-home-section__desc">{{ $summary }}</p>
     {{ $sectionPage := site.GetPage (printf "/%s/" $section) }}
     {{ $sectionHref := cond (ne $sectionPage nil) $sectionPage.RelPermalink (printf "/%s/" $section | relURL) }}
@@ -13,9 +13,10 @@
   <div class="aw-home-section__body">
     {{ if gt (len $pages) 0 }}
       {{ range $pages }}
-        <article class="aw-home-entry">
+        {{ $titleID := printf "home-entry-%s" (.RelPermalink | anchorize) }}
+        <article class="aw-home-entry" aria-labelledby="{{ $titleID }}">
           {{ with .Date }}<p class="aw-home-entry__meta"><time datetime="{{ .Format `2006-01-02` }}">{{ .Format "2 Jan 2006" }}</time></p>{{ end }}
-          <h3 class="aw-home-entry__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <h3 id="{{ $titleID }}" class="aw-home-entry__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
           {{ with .Params.summary }}
             <p class="aw-home-entry__summary">{{ . | plainify }}</p>
           {{ else }}
@@ -26,8 +27,8 @@
         </article>
       {{ end }}
     {{ else }}
-      <article class="aw-home-entry aw-home-entry--empty">
-        <h3 class="aw-home-entry__title">No entries yet</h3>
+      <article class="aw-home-entry aw-home-entry--empty" aria-labelledby="home-entry-empty-{{ $section }}">
+        <h3 id="home-entry-empty-{{ $section }}" class="aw-home-entry__title">No entries yet</h3>
         <p class="aw-home-entry__summary">This section is ready for writing.</p>
       </article>
     {{ end }}

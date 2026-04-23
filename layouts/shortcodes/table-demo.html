@@ -7,7 +7,7 @@
     <h2 class="aw-demo__title">{{ $title }}</h2>
     {{ with $desc }}<p class="aw-demo__desc">{{ . }}</p>{{ end }}
   </div>
-  <div class="aw-table-demo aw-table-demo--{{ $variant }}">
+  <div class="aw-table-demo aw-table-demo--{{ $variant }}" tabindex="0" role="region" aria-label="{{ $title }}">
     {{ .Inner | markdownify }}
   </div>
 </section>

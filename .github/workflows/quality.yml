@@ -1,0 +1,51 @@
+name: Quality
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.160.1"
+          extended: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validate content
+        run: npm run validate:content
+
+      - name: Build
+        run: npm run build
+
+      - name: Validate generated output
+        run: npm run validate:output
+
+      - name: Install browser audit tools
+        run: npm install --global @axe-core/cli @lhci/cli http-server
+
+      - name: Serve built site
+        run: npx http-server public -p 4173 --silent &
+
+      - name: Run axe
+        run: axe http://127.0.0.1:4173 --exit
+
+      - name: Run Lighthouse CI
+        run: lhci autorun --collect.url=http://127.0.0.1:4173 --collect.numberOfRuns=1 --upload.target=temporary-public-storage

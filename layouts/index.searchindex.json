@@ -1,0 +1,8 @@
+{{- $pages := where site.RegularPages "Params.noindex" "!=" true -}}
+[
+{{- range $i, $p := $pages -}}
+  {{- if $i }},{{ end -}}
+  {{- $summary := $p.Params.summary | default $p.Description | default ($p.Plain | plainify | truncate 240) -}}
+  {{- dict "title" $p.Title "url" $p.RelPermalink "section" ($p.CurrentSection.Title | default ($p.Section | humanize)) "date" (cond (not $p.Date.IsZero) ($p.Date.Format "2006-01-02") "") "summary" ($summary | plainify) "tags" ($p.Params.tags | default (slice)) | jsonify -}}
+{{- end -}}
+]

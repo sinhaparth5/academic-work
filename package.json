@@ -1,0 +1,12 @@
+{
+  "name": "academic-work-quality",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "hugo --minify --destination public --cleanDestinationDir",
+    "validate:content": "node scripts/validate-content.mjs",
+    "validate:output": "node scripts/validate-output.mjs public",
+    "validate": "npm run validate:content && npm run build && npm run validate:output"
+  },
+  "devDependencies": {}
+}

@@ -2,7 +2,15 @@
 {{ $alt := .Get "alt" | default "" }}
 {{ $caption := .Get "caption" }}
 {{ $size := .Get "size" | default "regular" }}
+{{ $image := resources.Get (strings.TrimPrefix "/" $src) }}
 <figure class="aw-figure aw-figure--{{ $size }}">
-  <img class="aw-figure__image" src="{{ $src | relURL }}" alt="{{ $alt }}">
+  {{ with $image }}
+    {{ $small := .Resize "480x webp" }}
+    {{ $medium := .Resize "800x webp" }}
+    {{ $large := .Resize "1200x webp" }}
+    <img class="aw-figure__image" src="{{ $medium.RelPermalink }}" srcset="{{ $small.RelPermalink }} 480w, {{ $medium.RelPermalink }} 800w, {{ $large.RelPermalink }} 1200w" sizes="(min-width: 48rem) 30rem, calc(100vw - 3rem)" width="{{ $medium.Width }}" height="{{ $medium.Height }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+  {{ else }}
+    <img class="aw-figure__image" src="{{ $src | relURL }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+  {{ end }}
   {{ with $caption }}<figcaption class="aw-figure__caption">{{ . }}</figcaption>{{ end }}
 </figure>

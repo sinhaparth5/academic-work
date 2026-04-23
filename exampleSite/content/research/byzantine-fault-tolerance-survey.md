@@ -9,7 +9,7 @@ year: 2024
 tags: ["distributed systems", "BFT", "consensus", "survey"]
 links:
   - label: "PDF"
-    url: "/files/bft-survey-2024.pdf"
+    url: "/files/main.pdf"
 ---
 
 ## Abstract

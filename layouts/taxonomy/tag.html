@@ -1,5 +1,5 @@
 {{ define "main" }}
-<main class="aw-shell">
+<main id="main-content" class="aw-shell" tabindex="-1">
   {{ partial "page-header.html" (dict "page" (dict "Title" (printf "#%s" .Title) "Params" (dict "summary" (printf "%d %s" (len .Pages) (cond (eq (len .Pages) 1) "entry" "entries")))) "eyebrow" "Tag") }}
   {{ partial "section-list.html" . }}
 </main>

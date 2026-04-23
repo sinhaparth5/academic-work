@@ -1,4 +1,4 @@
-<footer class="aw-footer">
+<footer class="aw-footer" role="contentinfo">
   <div class="aw-footer__inner">
     <div class="aw-footer__meta">
       <p>{{ site.Title }}.</p>
@@ -6,21 +6,21 @@
       {{ with site.Params.email }}<p><a href="mailto:{{ . }}">{{ . }}</a></p>{{ end }}
     </div>
     {{ with site.Params.social }}
-      <div class="aw-social" aria-label="Social links">
+      <nav class="aw-social" aria-label="Social links">
         {{ range . }}
           {{ $name := .name }}
           {{ $iconRes := resources.Get (strings.TrimPrefix "/" .icon) }}
           {{ if .url }}
-            <a class="aw-social__item" href="{{ .url }}" aria-label="{{ $name }}" target="_blank" rel="me noreferrer">
-              {{ with $iconRes }}<img src="{{ .RelPermalink }}" alt="{{ $name }}">{{ end }}
+            <a class="aw-social__item" href="{{ .url }}" aria-label="{{ $name }} (opens in a new tab)" target="_blank" rel="me noopener noreferrer">
+              {{ with $iconRes }}<img src="{{ .RelPermalink }}" width="24" height="24" alt="" aria-hidden="true">{{ end }}
             </a>
           {{ else }}
             <span class="aw-social__item" aria-label="{{ $name }}">
-              {{ with $iconRes }}<img src="{{ .RelPermalink }}" alt="{{ $name }}">{{ end }}
+              {{ with $iconRes }}<img src="{{ .RelPermalink }}" width="24" height="24" alt="" aria-hidden="true">{{ end }}
             </span>
           {{ end }}
         {{ end }}
-      </div>
+      </nav>
     {{ end }}
   </div>
 </footer>

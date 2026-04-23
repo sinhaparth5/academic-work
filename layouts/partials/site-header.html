@@ -1,22 +1,22 @@
 {{ $hamburger := resources.Get "images/hamburger-svgrepo-com.svg" }}
 {{ $cross     := resources.Get "images/cross-svgrepo-com.svg" }}
-<header class="aw-header">
+<header class="aw-header" role="banner">
   <div class="aw-header__inner">
     <a class="aw-brand" href="{{ site.Home.RelPermalink }}" aria-label="{{ site.Title }}">
-      <span class="aw-brand__mark">AW</span>
+      <span class="aw-brand__mark" aria-hidden="true">AW</span>
       <span class="aw-brand__text">
         <strong class="aw-brand__name">{{ site.Title }}</strong>
         {{ with site.Params.tagline }}<small class="aw-brand__tagline">{{ . }}</small>{{ end }}
       </span>
     </a>
-    <button class="aw-nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="aw-primary-nav">
+    <button class="aw-nav-toggle" type="button" aria-label="Open main navigation" aria-expanded="false" aria-controls="aw-primary-nav">
       {{ with $hamburger }}
-        <span class="aw-nav-toggle__hamburger">
+        <span class="aw-nav-toggle__hamburger" aria-hidden="true">
           {{ .Content | replaceRE `<\?xml[^>]*\?>` "" | replaceRE `fill="#[0-9A-Fa-f]+"` `fill="currentColor"` | safeHTML }}
         </span>
       {{ end }}
       {{ with $cross }}
-        <span class="aw-nav-toggle__cross">
+        <span class="aw-nav-toggle__cross" aria-hidden="true">
           {{ .Content | replaceRE `<\?xml[^>]*\?>` "" | replaceRE `fill="#[0-9A-Fa-f]+"` `fill="currentColor"` | safeHTML }}
         </span>
       {{ end }}
@@ -26,7 +26,7 @@
         {{ $page := site.GetPage .url }}
         {{ $href := cond (ne $page nil) $page.RelPermalink (.url | relURL) }}
         {{ $isActive := or (eq $.RelPermalink $href) (and (ne .url "/") (hasPrefix $.RelPermalink $href)) }}
-        <a class="aw-nav__link{{ if $isActive }} aw-nav__link--active{{ end }}" href="{{ $href }}">{{ .name }}</a>
+        <a class="aw-nav__link{{ if $isActive }} aw-nav__link--active{{ end }}" href="{{ $href }}"{{ if $isActive }} aria-current="page"{{ end }}>{{ .name }}</a>
       {{ end }}
     </nav>
   </div>

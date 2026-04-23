@@ -1,0 +1,17 @@
+{{ $src := .Destination }}
+{{ $alt := .Text | plainify }}
+{{ $title := .Title }}
+{{ $image := "" }}
+{{ if .Page.Resources.GetMatch $src }}
+  {{ $image = .Page.Resources.GetMatch $src }}
+{{ else }}
+  {{ $image = resources.Get (strings.TrimPrefix "/" $src) }}
+{{ end }}
+{{ if $image }}
+  {{ $small := $image.Resize "480x webp" }}
+  {{ $medium := $image.Resize "800x webp" }}
+  {{ $large := $image.Resize "1200x webp" }}
+  <img src="{{ $medium.RelPermalink }}" srcset="{{ $small.RelPermalink }} 480w, {{ $medium.RelPermalink }} 800w, {{ $large.RelPermalink }} 1200w" sizes="(min-width: 48rem) 44rem, calc(100vw - 3rem)" width="{{ $medium.Width }}" height="{{ $medium.Height }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+{{ else }}
+  <img src="{{ $src | safeURL }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+{{ end }}

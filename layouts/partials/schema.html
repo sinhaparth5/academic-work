@@ -1,0 +1,40 @@
+{{ $page := .page }}
+{{ $image := .image }}
+{{ $siteName := site.Params.seo.siteName | default site.Title }}
+{{ $author := site.Params.author | default site.Title }}
+{{ $socials := slice }}
+{{ with site.Params.social }}
+  {{ range . }}
+    {{ with .url }}{{ $socials = $socials | append . }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ $person := dict "@type" "Person" "name" $author "url" site.BaseURL }}
+{{ with site.Params.email }}{{ $person = merge $person (dict "email" (printf "mailto:%s" .)) }}{{ end }}
+{{ if gt (len $socials) 0 }}{{ $person = merge $person (dict "sameAs" $socials) }}{{ end }}
+{{ $graph := slice }}
+{{ if $page.IsHome }}
+  {{ $webSite := dict "@type" "WebSite" "@id" (printf "%s#website" site.BaseURL) "name" $siteName "url" site.BaseURL "description" .description "publisher" $person }}
+  {{ $graph = $graph | append $webSite }}
+  {{ $graph = $graph | append (merge $person (dict "@id" (printf "%s#person" site.BaseURL))) }}
+{{ else if and (eq $page.Section "research") $page.IsPage }}
+  {{ $article := dict "@type" "ScholarlyArticle" "headline" $page.Title "name" $page.Title "url" $page.Permalink "description" .description "author" $person "publisher" $person "mainEntityOfPage" $page.Permalink }}
+  {{ with $page.Date }}{{ $article = merge $article (dict "datePublished" (.Format "2006-01-02")) }}{{ end }}
+  {{ with $page.Lastmod }}{{ $article = merge $article (dict "dateModified" (.Format "2006-01-02")) }}{{ end }}
+  {{ with $page.Params.publication }}{{ $article = merge $article (dict "isPartOf" .) }}{{ end }}
+  {{ with $page.Params.authors }}{{ $article = merge $article (dict "author" (apply . "dict" "@type" "Person" "name" ".")) }}{{ end }}
+  {{ with $image }}{{ $article = merge $article (dict "image" (. | relURL | absURL)) }}{{ end }}
+  {{ $graph = $graph | append $article }}
+{{ end }}
+{{ if not $page.IsHome }}
+  {{ $items := slice (dict "@type" "ListItem" "position" 1 "name" site.Title "item" site.BaseURL) }}
+  {{ with $page.CurrentSection }}
+    {{ if ne .RelPermalink "/" }}
+      {{ $items = $items | append (dict "@type" "ListItem" "position" 2 "name" .Title "item" .Permalink) }}
+    {{ end }}
+  {{ end }}
+  {{ $items = $items | append (dict "@type" "ListItem" "position" (add (len $items) 1) "name" $page.Title "item" $page.Permalink) }}
+  {{ $graph = $graph | append (dict "@type" "BreadcrumbList" "itemListElement" $items) }}
+{{ end }}
+{{ if gt (len $graph) 0 }}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" $graph | jsonify | safeJS }}</script>
+{{ end }}

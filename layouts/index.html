@@ -1,8 +1,8 @@
 {{ define "main" }}
-<main class="aw-shell">
-  <section class="aw-home-intro">
+<main id="main-content" class="aw-shell" tabindex="-1">
+  <section class="aw-home-intro" aria-labelledby="home-title">
     <p class="aw-eyebrow">Academic Work</p>
-    <h1 class="aw-home-intro__title">{{ site.Title }}</h1>
+    <h1 id="home-title" class="aw-home-intro__title">{{ site.Title }}</h1>
     {{ with site.Params.intro }}<p class="aw-home-intro__desc">{{ . }}</p>{{ end }}
   </section>
   {{ with .Content }}

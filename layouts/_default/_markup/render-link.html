@@ -1,0 +1,5 @@
+{{ $destination := .Destination }}
+{{ $isPDF := strings.HasSuffix (lower $destination) ".pdf" }}
+{{ $isExternal := or (strings.HasPrefix $destination "http://") (strings.HasPrefix $destination "https://") }}
+{{ $needsBadge := and $isPDF (not (in (.Text | plainify | lower) "pdf")) }}
+<a href="{{ $destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $isPDF }} target="_blank" rel="noopener noreferrer"{{ else if $isExternal }} rel="noopener noreferrer"{{ end }}>{{ .Text | safeHTML }}{{ if $needsBadge }}<span class="aw-pdf-badge" aria-hidden="true">PDF</span>{{ end }}{{ if $isPDF }}<span class="aw-sr-only aw-new-tab-note"> (PDF, opens in a new tab)</span>{{ end }}</a>

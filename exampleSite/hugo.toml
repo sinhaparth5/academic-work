@@ -2,6 +2,8 @@ baseURL      = "https://academic-works.astrareconslabs.com/"
 languageCode = "en-gb"
 title        = "Parth Sinha"
 enableRobotsTXT = true
+disableHugoGeneratorInject = true
+cacheDir = "/tmp/hugo_cache"
 
 [sitemap]
   changefreq = "weekly"
@@ -56,6 +58,8 @@ enableRobotsTXT = true
     siteName      = "Parth Sinha"
     twitterHandle = "@parthsinha"
     defaultRobots = "index,follow"
+    imageWidth    = 1200
+    imageHeight   = 630
 
 
 [permalinks]
@@ -76,9 +80,15 @@ enableRobotsTXT = true
     rel            = "manifest"
     isHTML         = false
     notAlternative = false
+  [outputFormats.SearchIndex]
+    mediaType      = "application/json"
+    baseName       = "search"
+    rel            = "search"
+    isPlainText    = true
+    notAlternative = true
 
 [outputs]
-  home     = ["HTML", "RSS", "WebAppManifest"]
+  home     = ["HTML", "RSS", "WebAppManifest", "SearchIndex"]
   section  = ["HTML", "RSS"]
   page     = ["HTML"]
   taxonomy = ["HTML"]

@@ -2,6 +2,8 @@ baseURL = "https://example.org/"
 languageCode = "en-gb"
 title = "Academic Work"
 enableRobotsTXT = true
+disableHugoGeneratorInject = true
+cacheDir = "/tmp/hugo_cache"
 
 [module]
   [module.hugoVersion]
@@ -25,6 +27,8 @@ enableRobotsTXT = true
     siteName = "Academic Work"
     twitterHandle = ""
     defaultRobots = "index,follow"
+    imageWidth = 1200
+    imageHeight = 630
 
 [[params.social]]
   name = "GitHub"
@@ -79,9 +83,15 @@ enableRobotsTXT = true
     rel            = "manifest"
     isHTML         = false
     notAlternative = false
+  [outputFormats.SearchIndex]
+    mediaType      = "application/json"
+    baseName       = "search"
+    rel            = "search"
+    isPlainText    = true
+    notAlternative = true
 
 [outputs]
-  home     = ["HTML", "RSS", "WebAppManifest"]
+  home     = ["HTML", "RSS", "WebAppManifest", "SearchIndex"]
   section  = ["HTML", "RSS"]
   page     = ["HTML"]
   taxonomy = ["HTML"]

@@ -8,8 +8,8 @@ The repository includes a complete `exampleSite/` and a dedicated `Theme` refere
 
 - Six content sections out of the box: Research, Notes, Library, Projects, Teaching, About
 - Numbered home sections with a Swiss editorial layout
-- Fluid typographic scale (Source Serif 4)
-- WCAG AA accessible colour contrast throughout
+- Fluid typographic scale using self-hosted Source Serif 4
+- WCAG 2.2 AA-oriented accessibility: landmarks, skip link, keyboard focus states, current-page state, reduced-motion support, and AA colour contrast
 - BEM-namespaced CSS (`aw-` prefix) — zero class conflicts
 - Responsive down to 320 px
 - Dark mode via `prefers-color-scheme`
@@ -18,7 +18,10 @@ The repository includes a complete `exampleSite/` and a dedicated `Theme` refere
 - RSS feed with browser-readable XSLT stylesheet
 - Tag taxonomy with tag cloud index
 - Social links with SVG icons (GitHub, GitLab, X, Instagram, Facebook, WhatsApp, Bitbucket)
-- SEO meta, Open Graph, and Twitter Card tags included
+- SEO meta, JSON-LD schema, Open Graph, and Twitter Card tags included
+- Static JSON search index at `/search.json`
+- Responsive Markdown and figure images using Hugo image processing
+- Dependency-light validation scripts for content, output HTML, accessibility, and performance checks
 - Print stylesheet — hides navigation, expands external links
 - Sitemap and robots.txt support
 
@@ -203,6 +206,8 @@ To exclude a page from the sitemap, add `noindex: true` to its front matter (thi
 ```
 static/
   favicon.ico
+  images/
+    cover.png             (1200×630 Open Graph / Twitter image)
   icons/
     favicon-16x16.png
     favicon-32x32.png
@@ -210,6 +215,24 @@ static/
     icon-192.png           (192×192)
     icon-512.png           (512×512)
 ```
+
+### Search index
+
+The theme generates `/search.json` as a static index for client-side search. Each item includes title, URL, section, summary, plain text content, tags, and date. Pages with `noindex: true` are excluded.
+
+### Responsive images
+
+Markdown images and the built-in `figure` shortcode are rendered with `srcset`, dimensions, lazy loading, and async decoding when the source image is available as a page resource or under `assets/`. Static fallback images still receive accessibility and loading attributes.
+
+### Quality checks
+
+Run the local validation suite before publishing:
+
+```bash
+npm run validate
+```
+
+This checks front matter, Markdown image alt text, local content links, generated JSON-LD, duplicate IDs, local output links, image dimensions, external-link safety, generator meta removal, and search index generation. The GitHub Actions workflow also builds the site, runs axe accessibility checks, and records a Lighthouse run.
 
 ### RSS
 

@@ -1,5 +1,5 @@
 {{ define "main" }}
-<main class="aw-shell">
+<main id="main-content" class="aw-shell" tabindex="-1">
   <article class="aw-prose">
     {{ with .CurrentSection }}
       {{ if ne .RelPermalink "/" }}
@@ -22,23 +22,25 @@
         <p class="aw-single__meta">{{ delimit $metaText " · " }}</p>
       {{ end }}
       {{ if or .Params.links .Params.file }}
-        <div class="aw-doc-links">
+        <nav class="aw-doc-links" aria-label="Document links">
           {{ range .Params.links }}
             {{ $href := cond (hasPrefix .url "http") .url (.url | relURL) }}
-            <a class="aw-doc-link" href="{{ $href }}">{{ .label }}</a>
+            {{ $isPDF := strings.HasSuffix (lower .url) ".pdf" }}
+            {{ $needsBadge := and $isPDF (ne (lower .label) "pdf") }}
+            <a class="aw-doc-link" href="{{ $href }}"{{ if $isPDF }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .label }}{{ if $needsBadge }}<span class="aw-pdf-badge" aria-hidden="true">PDF</span>{{ end }}{{ if $isPDF }}<span class="aw-sr-only aw-new-tab-note"> (PDF, opens in a new tab)</span>{{ end }}</a>
           {{ end }}
           {{ with .Params.file }}
             {{ $href := cond (hasPrefix . "http") . (. | relURL) }}
-            <a class="aw-doc-link" href="{{ $href }}">Download PDF</a>
+            <a class="aw-doc-link" href="{{ $href }}" target="_blank" rel="noopener noreferrer">Download<span class="aw-pdf-badge" aria-hidden="true">PDF</span><span class="aw-sr-only aw-new-tab-note"> (PDF, opens in a new tab)</span></a>
           {{ end }}
-        </div>
+        </nav>
       {{ end }}
       {{ with .Params.tags }}
-        <p class="aw-single__taxonomy">
+        <nav class="aw-single__taxonomy" aria-label="Tags">
           {{ range . }}
             <a class="aw-single__tag" href="{{ printf "/tags/%s/" (. | urlize) | relURL }}">#{{ . }}</a>
           {{ end }}
-        </p>
+        </nav>
       {{ end }}
     </header>
     {{ .Content }}

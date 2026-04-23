@@ -9,7 +9,7 @@ year: 2023
 tags: ["machine learning", "distributed systems", "indexing", "key-value stores"]
 links:
   - label: "PDF"
-    url: "/files/learned-indices-mlsys23.pdf"
+    url: "/files/main.pdf"
 ---
 
 ## Abstract

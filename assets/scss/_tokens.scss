@@ -6,6 +6,7 @@
   --muted: #66615b;
   --faint: #6e6860;
   --label: #a03b10;
+  --focus: #7a2c0c;
   --line: #d4d1ca;
   --shadow: 0 4px 16px rgba(17, 17, 16, 0.06);
 
@@ -13,7 +14,7 @@
   --content-width: 44rem;
   --gutter: clamp(1.5rem, 3.5vw, 3.5rem);
 
-  --font-body: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-body: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
   --step--1: clamp(0.82rem, 0.79rem + 0.13vw, 0.91rem);
@@ -31,8 +32,9 @@
     --surface-strong: #242220;
     --text:           #f0ede8;
     --muted:          #9e9890;
-    --faint:          #827c74;
+    --faint:          #858078;
     --label:          #d4694a;
+    --focus:          #f28a6b;
     --line:           #2c2a27;
     --shadow:         0 4px 16px rgba(0, 0, 0, 0.35);
   }
