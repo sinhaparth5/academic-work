@@ -96,6 +96,8 @@ disableHugoGeneratorInject = true
   [params.seo]
     siteName = "Your Name"
     twitterHandle = "@yourhandle"
+    googleTagManagerID = "GTM-XXXXXXX"
+    googleAnalyticsID = "G-XXXXXXXXXX"
     defaultRobots = "index,follow"
     imageWidth = 1200
     imageHeight = 630

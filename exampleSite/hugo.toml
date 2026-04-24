@@ -57,6 +57,8 @@ cacheDir = "/tmp/hugo_cache"
   [params.seo]
     siteName      = "Parth Sinha"
     twitterHandle = "@parthsinha"
+    googleTagManagerID = "GTM-T9JN355V"
+    googleAnalyticsID = "G-NG150921DW"
     defaultRobots = "index,follow"
     imageWidth    = 1200
     imageHeight   = 630

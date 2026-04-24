@@ -43,6 +43,8 @@
 {{ end }}{{ end }}
 <link rel="preload" href="{{ `/fonts/source-serif-4-latin-normal.woff2` | relURL }}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+{{ partial "google-tag-manager.html" (dict "id" site.Params.seo.googleTagManagerID "context" "head") }}
+{{ partial "google-analytics.html" site.Params.seo.googleAnalyticsID }}
 {{ if or .Params.math site.Params.math }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css" integrity="sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js" integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI" crossorigin="anonymous"></script>

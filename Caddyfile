@@ -25,9 +25,10 @@
 		-Server
 
 		# Content Security Policy
+		# - Google Tag Manager and Google Analytics are used for analytics.
 		# - jsDelivr is only needed on pages that opt into KaTeX math.
 		# - unsafe-inline on style-src is required because KaTeX injects inline style attributes at runtime.
-		Content-Security-Policy "default-src 'none'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:; manifest-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'"
+		Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; frame-src https://www.googletagmanager.com; manifest-src 'self'; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'none'"
 	}
 
 	# Fingerprinted CSS and JS are immutable

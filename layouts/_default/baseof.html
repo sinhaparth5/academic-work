@@ -4,6 +4,7 @@
     {{ partial "head.html" . }}
   </head>
   <body>
+    {{ partial "google-tag-manager.html" (dict "id" site.Params.seo.googleTagManagerID "context" "body") }}
     <a class="aw-skip-link" href="#main-content">Skip to main content</a>
     {{ partial "site-header.html" . }}
     {{ block "main" . }}{{ end }}
