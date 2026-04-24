@@ -4,13 +4,14 @@
     {{ partial "head.html" . }}
   </head>
   <body>
-    {{ partial "google-tag-manager.html" (dict "id" site.Params.seo.googleTagManagerID "context" "body") }}
+    {{ partial "google-tag-manager.html" (dict "id" site.Params.seo.googletagmanagerid "context" "body" "deferUntilConsent" site.Params.seo.cookieconsentbanner) }}
     <a class="aw-skip-link" href="#main-content">Skip to main content</a>
     {{ partial "site-header.html" . }}
     {{ block "main" . }}{{ end }}
     {{ partial "site-footer.html" . }}
-    {{ with resources.Get "js/main.js" }}
-    <script src="{{ .RelPermalink }}" defer></script>
+    {{ partial "cookie-consent.html" . }}
+    {{ with resources.Get "js/main.js" | minify | fingerprint }}
+    <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
     {{ end }}
   </body>
 </html>

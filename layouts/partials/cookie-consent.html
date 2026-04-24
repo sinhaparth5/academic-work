@@ -1,0 +1,19 @@
+{{ if and site.Params.seo.cookieconsentbanner (or site.Params.seo.googletagmanagerid site.Params.seo.googleanalyticsid) }}
+<aside
+  class="aw-consent"
+  data-aw-consent
+  data-gtm-id="{{ site.Params.seo.googletagmanagerid }}"
+  data-ga-id="{{ site.Params.seo.googleanalyticsid }}"
+  data-privacy-url="{{ site.Params.seo.cookieconsentprivacyurl | default `/privacy/` }}"
+  hidden
+>
+  <p class="aw-consent__text">
+    This site uses analytics cookies to understand what people read and improve the theme.
+    <a href="{{ site.Params.seo.cookieconsentprivacyurl | default `/privacy/` }}">Learn more</a>
+  </p>
+  <div class="aw-consent__actions">
+    <button class="aw-consent__button aw-consent__button--ghost" type="button" data-aw-consent-action="decline">Decline</button>
+    <button class="aw-consent__button" type="button" data-aw-consent-action="accept">Accept</button>
+  </div>
+</aside>
+{{ end }}

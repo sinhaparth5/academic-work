@@ -209,6 +209,68 @@ blockquote {
   position: relative;
 }
 
+.aw-consent {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 999;
+  width: unquote("min(28rem, calc(100% - 2rem))");
+  padding: 1rem 1rem 0.95rem;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 88%, var(--surface) 12%);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.aw-consent[hidden] {
+  display: none;
+}
+
+.aw-consent__text {
+  margin: 0 0 0.9rem;
+  color: var(--muted);
+  font-size: var(--step--1);
+  line-height: 1.55;
+}
+
+.aw-consent__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.aw-consent__button {
+  appearance: none;
+  border: 1px solid var(--text);
+  background: var(--text);
+  color: var(--bg);
+  padding: 0.55rem 0.85rem;
+  font: inherit;
+  font-size: var(--step--1);
+  cursor: pointer;
+}
+
+.aw-consent__button--ghost {
+  background: transparent;
+  color: var(--text);
+}
+
+@media (max-width: 40rem) {
+  .aw-consent {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    width: calc(100% - 1.5rem);
+  }
+
+  .aw-consent__actions {
+    flex-direction: column-reverse;
+  }
+
+  .aw-consent__button {
+    width: 100%;
+  }
+}
+
 /* ── Print ───────────────────────────────────────────────── */
 @media print {
   .aw-header,
@@ -216,7 +278,8 @@ blockquote {
   .aw-nav-toggle,
   .aw-social,
   .aw-back-link,
-  .aw-pdf-badge {
+  .aw-pdf-badge,
+  .aw-consent {
     display: none !important;
   }
 

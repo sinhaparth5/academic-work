@@ -1,4 +1,5 @@
-{{ with . }}
+{{ with .id }}
+{{ if not $.deferUntilConsent }}
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
 <script>
@@ -8,4 +9,5 @@
 
   gtag('config', '{{ . }}');
 </script>
+{{ end }}
 {{ end }}
