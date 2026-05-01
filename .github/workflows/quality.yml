@@ -39,10 +39,16 @@ jobs:
         run: npm run validate:output
 
       - name: Install browser audit tools
-        run: npm install --global @axe-core/cli @lhci/cli http-server
+        run: npm install --global @axe-core/cli @lhci/cli browser-driver-manager http-server wait-on
+
+      - name: Install synced Chrome and ChromeDriver
+        run: npx browser-driver-manager install chrome
 
       - name: Serve built site
         run: npx http-server public -p 4173 --silent &
+
+      - name: Wait for local site
+        run: wait-on http://127.0.0.1:4173
 
       - name: Run axe
         run: axe http://127.0.0.1:4173 --exit
