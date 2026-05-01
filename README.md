@@ -174,7 +174,7 @@ file: "/files/cv.pdf"
 
 ## Math
 
-Enable KaTeX globally with:
+Enable MathSnap globally with:
 
 ```toml
 [params]

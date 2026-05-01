@@ -18,7 +18,7 @@ This project uses [Semantic Versioning](https://semver.org/).
 - BEM-namespaced CSS (`aw-` prefix) throughout — zero class conflicts
 - Dark mode via `prefers-color-scheme` media query
 - Responsive navigation with accessible hamburger menu (SVG icons, `aria-expanded`)
-- LaTeX rendering via KaTeX 0.16.45 — opt-in per page (`math = true`) or globally
+- LaTeX rendering via MathSnap — opt-in per page (`math = true`) or globally
 - PDF links open in a new tab with an automatic `PDF` badge
 - RSS feed with browser-readable XSLT stylesheet (`/feed.xsl`)
 - Tag taxonomy with tag cloud index page

@@ -46,9 +46,8 @@
 {{ partial "google-tag-manager.html" (dict "id" site.Params.seo.googletagmanagerid "context" "head" "deferUntilConsent" site.Params.seo.cookieconsentbanner) }}
 {{ partial "google-analytics.html" (dict "id" site.Params.seo.googleanalyticsid "deferUntilConsent" site.Params.seo.cookieconsentbanner) }}
 {{ if or .Params.math site.Params.math }}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css" integrity="sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js" integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://sinhaparth5.github.io/mathsnap/mathsnap.min.css">
+<script defer src="https://sinhaparth5.github.io/mathsnap/browser/mathsnap.min.js"></script>
 {{ with resources.Get "js/math.js" | minify | fingerprint }}
 <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
 {{ end }}

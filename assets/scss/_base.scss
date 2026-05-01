@@ -194,14 +194,16 @@ blockquote {
   font-style: italic;
 }
 
-/* ── KaTeX display math ── */
-.katex-display {
+/* ── Display math ── */
+.aw-math-block,
+.mathsnap-render.mathsnap-display {
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 0.5rem;
 }
 
-.katex-display > .katex {
+.aw-math-block > *,
+.mathsnap-render.mathsnap-display > * {
   white-space: normal;
 }
 
