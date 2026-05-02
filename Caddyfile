@@ -28,7 +28,7 @@
 		# - Google Tag Manager and Google Analytics are used for analytics.
 		# - MathSnap assets are loaded from jsDelivr on pages that opt into math.
 		# - unsafe-inline on style-src is kept for third-party math rendering styles.
-		Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://sinhaparth5.github.io https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://sinhaparth5.github.io https://cdn.jsdelivr.net; font-src 'self' https://sinhaparth5.github.io; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://sinhaparth5.github.io; frame-src https://www.googletagmanager.com; manifest-src 'self'; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'none'"
+		Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://sinhaparth5.github.io https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://sinhaparth5.github.io https://cdn.jsdelivr.net; font-src 'self' https://sinhaparth5.github.io https://cdn.jsdelivr.net; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://sinhaparth5.github.io; frame-src https://www.googletagmanager.com; manifest-src 'self'; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://cdn.jsdelivr.net; frame-ancestors 'none'; base-uri 'self'; form-action 'none'"
 	}
 
 	# Fingerprinted CSS and JS are immutable
