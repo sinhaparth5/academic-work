@@ -4,6 +4,36 @@ document.addEventListener("DOMContentLoaded", function () {
   var consentBanner = document.querySelector("[data-aw-consent]");
   var toggle = document.querySelector(".aw-nav-toggle");
   var nav    = document.querySelector(".aw-nav");
+  var getCookie = function (name) {
+    var prefix = encodeURIComponent(name) + "=";
+
+    return document.cookie
+      .split(";")
+      .map(function (cookie) {
+        return cookie.trim();
+      })
+      .filter(function (cookie) {
+        return cookie.indexOf(prefix) === 0;
+      })
+      .map(function (cookie) {
+        return decodeURIComponent(cookie.slice(prefix.length));
+      })[0] || null;
+  };
+
+  var setCookie = function (name, value, maxAge) {
+    var cookie = [
+      encodeURIComponent(name) + "=" + encodeURIComponent(value),
+      "Path=/",
+      "Max-Age=" + String(maxAge),
+      "SameSite=Lax"
+    ];
+
+    if (window.location.protocol === "https:") {
+      cookie.push("Secure");
+    }
+
+    document.cookie = cookie.join("; ");
+  };
 
   if (toggle && nav) {
     var setNavigationState = function (isOpen) {
@@ -60,7 +90,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var consentKey = "aw-cookie-consent";
     var gtmId = consentBanner.getAttribute("data-gtm-id");
     var gaId = consentBanner.getAttribute("data-ga-id");
-    var consentValue = window.localStorage.getItem(consentKey);
+    var consentMaxAge = 60 * 60 * 24 * 180;
+    var consentValue = getCookie(consentKey);
 
     var loadGoogleTagManager = function (id) {
       if (!id || window.awGoogleTagManagerLoaded) {
@@ -118,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var action = button.getAttribute("data-aw-consent-action");
         var value = action === "accept" ? "accepted" : "declined";
 
-        window.localStorage.setItem(consentKey, value);
+        setCookie(consentKey, value, consentMaxAge);
         applyAnalyticsConsent(value);
       });
     });
