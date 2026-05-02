@@ -46,8 +46,8 @@
 {{ partial "google-tag-manager.html" (dict "id" site.Params.seo.googletagmanagerid "context" "head" "deferUntilConsent" site.Params.seo.cookieconsentbanner) }}
 {{ partial "google-analytics.html" (dict "id" site.Params.seo.googleanalyticsid "deferUntilConsent" site.Params.seo.cookieconsentbanner) }}
 {{ if or .Params.math site.Params.math }}
-<link rel="stylesheet" href="https://sinhaparth5.github.io/mathsnap/mathsnap.min.css">
-<script defer src="https://sinhaparth5.github.io/mathsnap/browser/mathsnap.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mathsnap@1.0.9/dist/mathsnap.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/mathsnap@1.0.9/dist/browser/mathsnap.min.js" integrity="sha384-EI6cn8wRm7acxoYAYfFFlGWEke2bcJBHLsLLbNssdH9IsxqlY5OAPWwrQcSXX4kV" crossorigin="anonymous"></script>
 {{ with resources.Get "js/math.js" | minify | fingerprint }}
 <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
 {{ end }}
