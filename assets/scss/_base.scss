@@ -124,6 +124,8 @@ header, article, section, nav, footer {
 article,
 .aw-prose {
   width: unquote("min(100%, var(--content-width))");
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 header p,
