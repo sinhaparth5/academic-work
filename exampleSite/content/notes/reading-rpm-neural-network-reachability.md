@@ -182,7 +182,7 @@ In this experiment, a neural network was trained to model the reverse-time dynam
 
 Using the homeomorphic acceleration, RPM was able to compute 30-step ROAs that perfectly matched the theoretical limit cycle boundary. The resulting set was composed of **32,753 unique polyhedral regions**. Notably, the algorithm was able to verify the entire stable region even as it became highly non-convex and "stretched" by the system's dynamics. Traditional Lyapunov methods in the MPT3 toolbox failed to converge on an answer even after 9 hours of computation, highlighting the superiority of RPM's reachability-based approach for high-nonlinearity systems.
 
-{{< video src="/images/videos/Van_der_Pol_oscillator_phase_plot_01.webm.1080p.vp9.webm" >}}
+{{< video src="/videos/van-der-pol-oscillator-phase-plot.mp4" >}}
 
 ![Phase-plane portrait of the van der Pol limit cycle, with RPM polyhedral mosaic filling the region of attraction](/images/notes/van-der-pol-limit-cycle-phase-portrait.png "Van der Pol Limit Cycle Phase Portrait")
 
