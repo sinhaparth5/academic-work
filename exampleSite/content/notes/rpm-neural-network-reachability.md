@@ -1,5 +1,5 @@
 ---
-title: "Reading Notes: Reachable Polyhedral Marching for Deep-Learned Control Systems"
+title: "Reachable Polyhedral Marching for Deep-Learned Control Systems"
 date: 2026-05-13
 draft: false
 math: true
