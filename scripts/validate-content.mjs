@@ -69,11 +69,12 @@ for (const file of files) {
   }
 
   for (const match of raw.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) {
-    const target = match[1].split(/\s+/)[0];
+    const target = match[1].trim().replace(/\s+["'].*$/, "");
     if (isExternal(target)) continue;
     if (target.startsWith("/")) {
-      const candidate = path.join("static", target);
-      if (!fs.existsSync(candidate) && !target.endsWith("/")) {
+      const inStatic = fs.existsSync(path.join("static", target));
+      const inAssets = fs.existsSync(path.join("assets", target));
+      if (!inStatic && !inAssets && !target.endsWith("/")) {
         errors.push(`${file}: absolute link ${target} does not map to a static file or section URL`);
       }
     }
