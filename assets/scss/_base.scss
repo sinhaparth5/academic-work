@@ -157,10 +157,39 @@ pre:focus-visible,
   outline-offset: 3px;
 }
 
+.aw-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 0 1.75rem;
+}
+
+.aw-table-strip--soft table {
+  border: none;
+  background: transparent;
+}
+
+.aw-table-strip--soft thead th {
+  border-bottom: 1px solid var(--line);
+}
+
+.aw-table-strip--soft tbody td {
+  border-bottom: none;
+}
+
+.aw-table-strip--soft tbody tr:nth-child(odd) td {
+  background: var(--surface-strong);
+}
+
+.aw-table-strip--soft th,
+.aw-table-strip--soft td {
+  padding-left: 0.9rem;
+  padding-right: 0.9rem;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 0 0 1.75rem;
+  margin: 0;
   font-size: var(--step--1);
 }
 
