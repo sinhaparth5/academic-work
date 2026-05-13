@@ -250,15 +250,15 @@ The ability to compute exact forward and backward reachable sets, identify non-c
 
 ## Works cited
 
-1. Neural network verification: Where are we and where do we go from here? SIGPLAN Blog. https://blog.sigplan.org/2021/11/04/neural-network-verification-where-are-we-and-where-do-we-go-from-here/
-2. Mechanistic Interpretability of ReLU Neural Networks Through Piecewise-Affine Mapping. https://www.es.mdu.se/pdf_publications/7328.pdf
-3. Model checking deep neural networks: opportunities and challenges. *Frontiers in Computer Science*, 2025. https://www.frontiersin.org/journals/computer-science/articles/10.3389/fcomp.2025.1557977/full
-4. Huang, X., Kwiatkowska, M., Wang, S., & Wu, M. Safety Verification of Deep Neural Networks. Heriot-Watt University. https://researchportal.hw.ac.uk/files/15724646/neural_network.pdf
-5. Vincent, J. A., & Schwager, M. (2022). Reachable Polyhedral Marching (RPM): An Exact Analysis Tool for Deep-Learned Control Systems. *arXiv:2210.08339*. https://arxiv.org/html/2210.08339v3
-6. Formal Analysis and Redesign of a Neural Network-Based Aircraft Taxiing System with VerifAI. *PMC*. https://pmc.ncbi.nlm.nih.gov/articles/PMC7363209/
-7. Efficient Reachability Analysis of Closed-Loop Systems with Neural Network Controllers. https://airou.cs.ou.edu/airou/assets/publications/Efficient_Reachability_Analysis_of_Closed-Loop_Systems_with_Neural_Network_Controllers.pdf
-8. Hamilton-Jacobi Reachability Theory. The Safe Autonomous Systems Lab. http://sylviaherbert.com/hamilton-jacobi-reachability-analysis
-9. Vincent, J. A., & Schwager, M. (2021). Reachable Polyhedral Marching (RPM): A Safety Verification Algorithm for Robotic Systems with Deep Neural Network Components. Stanford MSL. https://msl.stanford.edu/papers/vincent_reachable_2021.pdf
-10. Neural Network Repair with Reachability Analysis. DigitalCommons@UNL. https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1322&context=csearticles
-11. Van der Pol oscillator. *Wikipedia*. https://en.wikipedia.org/wiki/Van_der_Pol_oscillator
-12. Lyapunov stability. *Wikipedia*. https://en.wikipedia.org/wiki/Lyapunov_stability
+1. [Neural network verification: Where are we and where do we go from here? SIGPLAN Blog.](https://blog.sigplan.org/2021/11/04/neural-network-verification-where-are-we-and-where-do-we-go-from-here/)
+2. [Mechanistic Interpretability of ReLU Neural Networks Through Piecewise-Affine Mapping.](https://www.es.mdu.se/pdf_publications/7328.pdf)
+3. [Model checking deep neural networks: opportunities and challenges. *Frontiers in Computer Science*, 2025.](https://www.frontiersin.org/journals/computer-science/articles/10.3389/fcomp.2025.1557977/full)
+4. [Huang, X., Kwiatkowska, M., Wang, S., & Wu, M. Safety Verification of Deep Neural Networks. Heriot-Watt University.](https://researchportal.hw.ac.uk/files/15724646/neural_network.pdf)
+5. [Vincent, J. A., & Schwager, M. (2022). Reachable Polyhedral Marching (RPM): An Exact Analysis Tool for Deep-Learned Control Systems. *arXiv:2210.08339*.](https://arxiv.org/html/2210.08339v3)
+6. [Formal Analysis and Redesign of a Neural Network-Based Aircraft Taxiing System with VerifAI. *PMC*.](https://pmc.ncbi.nlm.nih.gov/articles/PMC7363209/)
+7. [Efficient Reachability Analysis of Closed-Loop Systems with Neural Network Controllers.](https://airou.cs.ou.edu/airou/assets/publications/Efficient_Reachability_Analysis_of_Closed-Loop_Systems_with_Neural_Network_Controllers.pdf)
+8. [Hamilton-Jacobi Reachability Theory. The Safe Autonomous Systems Lab.](http://sylviaherbert.com/hamilton-jacobi-reachability-analysis)
+9. [Vincent, J. A., & Schwager, M. (2021). Reachable Polyhedral Marching (RPM): A Safety Verification Algorithm for Robotic Systems with Deep Neural Network Components. Stanford MSL.](https://msl.stanford.edu/papers/vincent_reachable_2021.pdf)
+10. [Neural Network Repair with Reachability Analysis. DigitalCommons@UNL.](https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1322&context=csearticles)
+11. [Van der Pol oscillator. *Wikipedia*.](https://en.wikipedia.org/wiki/Van_der_Pol_oscillator)
+12. [Lyapunov stability. *Wikipedia*.](https://en.wikipedia.org/wiki/Lyapunov_stability)
