@@ -27,7 +27,7 @@ cacheDir = "/tmp/hugo_cache"
 [[params.social]]
   name = "GitLab"
   icon = "/images/socials/gitlab-svgrepo-com.svg"
-  url  = "https://gitlab.com/example"
+  url  = "https://gitlab.com/sinhaparth5"
 
 [[params.social]]
   name = "Bitbucket"
@@ -37,7 +37,7 @@ cacheDir = "/tmp/hugo_cache"
 [[params.social]]
   name = "X"
   icon = "/images/socials/Twitter-X--Streamline-Bootstrap.svg"
-  url  = "https://x.com/example"
+  url  = "https://x.com/parth_sinha18"
 
 [[params.social]]
   name = "Instagram"
