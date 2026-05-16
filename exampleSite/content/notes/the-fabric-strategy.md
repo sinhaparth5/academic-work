@@ -344,11 +344,11 @@ To prove trajectories avoid unsafe states:
 The key final check is:
 
 $$
+\begin{aligned}
 \overline{\mathcal{X}}_{N_f}
-  \cap
-\overline{\operatorname{Pre}}_{\exists}^{N_b}(\mathcal{A})
-  =
-\emptyset.
+  \cap \overline{\operatorname{Pre}}_{\exists}^{N_b}(\mathcal{A})
+  &= \emptyset.
+\end{aligned}
 $$
 
 If this holds, the initial states cannot reach the avoid set within the horizon.
