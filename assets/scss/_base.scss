@@ -69,6 +69,10 @@ img {
   background: var(--surface);
 }
 
+.aw-prose .aw-figure img {
+  margin: 0;
+}
+
 a {
   color: inherit;
   text-decoration-color: var(--line);

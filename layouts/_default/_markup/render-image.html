@@ -2,6 +2,7 @@
 {{ $alt := .Text | plainify }}
 {{ $title := .Title }}
 {{ $image := "" }}
+{{ $caption := $title | default $alt }}
 {{ if .Page.Resources.GetMatch $src }}
   {{ $image = .Page.Resources.GetMatch $src }}
 {{ else }}
@@ -11,7 +12,17 @@
   {{ $small := $image.Resize "480x webp" }}
   {{ $medium := $image.Resize "800x webp" }}
   {{ $large := $image.Resize "1200x webp" }}
-  <img src="{{ $medium.RelPermalink }}" srcset="{{ $small.RelPermalink }} 480w, {{ $medium.RelPermalink }} 800w, {{ $large.RelPermalink }} 1200w" sizes="(min-width: 48rem) 44rem, calc(100vw - 3rem)" width="{{ $medium.Width }}" height="{{ $medium.Height }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+  <span class="aw-figure aw-figure--content" role="figure"{{ with $caption }} aria-label="{{ . }}"{{ end }}>
+    <button class="aw-image-zoom" type="button" data-aw-lightbox-src="{{ $image.RelPermalink }}" data-aw-lightbox-alt="{{ $alt }}" data-aw-lightbox-caption="{{ $caption }}">
+      <img class="aw-figure__image" src="{{ $medium.RelPermalink }}" srcset="{{ $small.RelPermalink }} 480w, {{ $medium.RelPermalink }} 800w, {{ $large.RelPermalink }} 1200w" sizes="(min-width: 48rem) 44rem, calc(100vw - 3rem)" width="{{ $medium.Width }}" height="{{ $medium.Height }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+    </button>
+    {{ with $caption }}<span class="aw-figure__caption">{{ . }}</span>{{ end }}
+  </span>
 {{ else }}
-  <img src="{{ $src | safeURL }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+  <span class="aw-figure aw-figure--content" role="figure"{{ with $caption }} aria-label="{{ . }}"{{ end }}>
+    <button class="aw-image-zoom" type="button" data-aw-lightbox-src="{{ $src | safeURL }}" data-aw-lightbox-alt="{{ $alt }}" data-aw-lightbox-caption="{{ $caption }}">
+      <img class="aw-figure__image" src="{{ $src | safeURL }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+    </button>
+    {{ with $caption }}<span class="aw-figure__caption">{{ . }}</span>{{ end }}
+  </span>
 {{ end }}

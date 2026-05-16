@@ -55,7 +55,7 @@ Because each region is a convex polyhedron defined by linear inequalities, the e
 | Polyhedral Region | $\mathcal{P}_i \subset \mathbb{R}^n$ | The "domain of validity" for a local linear map. |
 | Output Map | $A_i x + c_i$ | The control action or state prediction. |
 
-![ReLU piecewise linear surface — each flat plate represents one affine region of the network](/images/notes/neural-mosaic-relu-piecewise-linear-surface.png "Neural Mosaic: ReLU Piecewise Linear Surface")
+![ReLU piecewise linear surface — each flat plate represents one affine region of the network](/images/notes/neural-mosaic-relu-piecewise-linear-surface.png "Neural Mosaic: ReLU Piecewise Linear Surface. AI-generated illustration.")
 
 ## Reachable Polyhedral Marching: The Core Algorithm
 
@@ -99,7 +99,7 @@ The global RPM algorithm maintains a **working set** of unexplored activation pa
 | Neighbour Logic | Algorithm 3 | Flip specific neurons to find the next activation state. |
 | Marching Process | Algorithm 4 | Recursively visit neighbours until the domain is covered. |
 
-![The RPM algorithm marches incrementally through polyhedral activation regions](/images/notes/reachable-polyhedral-marching-process.png "Reachable Polyhedral Marching Process")
+![The RPM algorithm marches incrementally through polyhedral activation regions](/images/notes/reachable-polyhedral-marching-process.png "Reachable Polyhedral Marching Process. AI-generated illustration.")
 
 ## Reachability: Predicting the Future and Tracing the Past
 
@@ -145,7 +145,7 @@ Classical methods often approximate the ROA using ellipsoids derived from Lyapun
 
 This method is uniquely powerful because it can handle **non-convex and even disconnected sets** — something traditional "bowl-shaped" Lyapunov methods cannot do.
 
-![Safety enclosure comparison: conservative Lyapunov ellipsoid (left) vs. exact RPM polyhedral region (right)](/images/notes/safety-enclosure-comparison.png "Safety Enclosure Comparison")
+![Safety enclosure comparison: conservative Lyapunov ellipsoid (left) vs. exact RPM polyhedral region (right)](/images/notes/safety-enclosure-comparison.png "Safety Enclosure Comparison. AI-generated illustration.")
 
 ## Homeomorphisms: The Secret to Computational Speed
 
@@ -184,7 +184,7 @@ Using the homeomorphic acceleration, RPM was able to compute 30-step ROAs that p
 
 {{< video src="/videos/van-der-pol-oscillator-phase-plot.mp4" >}}
 
-![Phase-plane portrait of the van der Pol limit cycle, with RPM polyhedral mosaic filling the region of attraction](/images/notes/van-der-pol-limit-cycle-phase-portrait.png "Van der Pol Limit Cycle Phase Portrait")
+![Phase-plane portrait of the van der Pol limit cycle, with RPM polyhedral mosaic filling the region of attraction](/images/notes/van-der-pol-limit-cycle-phase-portrait.png "Van der Pol Limit Cycle Phase Portrait. AI-generated illustration.")
 
 ## Case Study 2: The Torque-Controlled Inverted Pendulum
 
@@ -221,7 +221,7 @@ The resulting PWA function contained **244,920 affine regions** — orders of ma
 
 This analysis provided a definitive **"safety funnel"** for pilots and autonomous systems. It showed that as long as the plane starts within this polyhedral region, the learned image-based controller is mathematically guaranteed to stabilise it onto the centreline, despite the complexity of the visual inputs. This represents a milestone in the "Assured Autonomy" movement, providing a path to certify vision-based AI for use in commercial aviation.
 
-![The RPM safety funnel for TaxiNet: the polyhedral region of guaranteed stabilisation onto the runway centreline](/images/notes/taxiway-safety-funnel.png "Taxiway Safety Funnel")
+![The RPM safety funnel for TaxiNet: the polyhedral region of guaranteed stabilisation onto the runway centreline](/images/notes/taxiway-safety-funnel.png "Taxiway Safety Funnel. AI-generated illustration.")
 
 ## Formal Verification vs. Traditional Engineering
 

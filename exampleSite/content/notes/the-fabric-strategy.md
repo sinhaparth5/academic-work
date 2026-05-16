@@ -23,7 +23,7 @@ Historically, engineers have relied on sampling-based falsification methods: Mon
 
 The **Forward and Backward Reachability Integration for Certification (FABRIC)** strategy addresses this gap by combining forward reachable-set propagation with backward pre-image analysis. The central idea is to avoid pushing one approximation across a long time horizon. Instead, FABRIC computes from both ends and asks whether the two analyses meet in the middle.
 
-![Visualizing neural feedback systems as a closed loop between controller, plant dynamics, disturbance, and safety specification](/images/notes/Visualizing-Neural-Feedback-Systems.png "Visualizing Neural Feedback Systems")
+![Visualizing neural feedback systems as a closed loop between controller, plant dynamics, disturbance, and safety specification](/images/notes/Visualizing-Neural-Feedback-Systems.png "Visualizing Neural Feedback Systems. AI-generated illustration.")
 
 ## Mathematical Formalization of Neural Feedback Systems
 
@@ -124,7 +124,7 @@ $$
 
 FABRIC partitions the domain into simplices. A simplex is the higher-dimensional generalization of a line segment, triangle, or tetrahedron. Over each simplex, the nonlinear function is enclosed between linear upper and lower bounds. The union of those local bounds forms a polyhedral enclosure of the nonlinear plant.
 
-![Abstracting nonlinear dynamics by covering curved trajectories with local polyhedral enclosures](/images/notes/Abstracting-Nonlinear-Dynamics.png "Abstracting Nonlinear Dynamics")
+![Abstracting nonlinear dynamics by covering curved trajectories with local polyhedral enclosures](/images/notes/Abstracting-Nonlinear-Dynamics.png "Abstracting Nonlinear Dynamics. AI-generated illustration.")
 
 ### Delaunay Triangulation
 
@@ -312,7 +312,7 @@ $$
 
 where $N_f$ is the number of forward steps and $N_b$ is the number of backward steps. Usually $N_f$ is larger because backward queries are more expensive.
 
-![The FABRIC architecture meets forward reachable sets and backward reachable sets in the middle of the verification horizon](/images/notes/The-FABRIC-Architecture.png "The FABRIC Architecture")
+![The FABRIC architecture meets forward reachable sets and backward reachable sets in the middle of the verification horizon](/images/notes/The-FABRIC-Architecture.png "The FABRIC Architecture. AI-generated illustration.")
 
 ### Certifying Reach Properties
 

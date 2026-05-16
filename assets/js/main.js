@@ -86,6 +86,80 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  var lightboxTriggers = document.querySelectorAll("[data-aw-lightbox-src]");
+
+  if (lightboxTriggers.length) {
+    var lightbox = document.createElement("div");
+    var lightboxFigure = document.createElement("figure");
+    var lightboxImage = document.createElement("img");
+    var lightboxCaption = document.createElement("figcaption");
+    var lightboxClose = document.createElement("button");
+
+    lightbox.className = "aw-lightbox";
+    lightbox.hidden = true;
+    lightbox.setAttribute("role", "dialog");
+    lightbox.setAttribute("aria-modal", "true");
+    lightbox.setAttribute("aria-label", "Expanded image");
+
+    lightboxFigure.className = "aw-lightbox__figure";
+    lightboxImage.className = "aw-lightbox__image";
+    lightboxCaption.className = "aw-lightbox__caption";
+    lightboxClose.className = "aw-lightbox__close";
+    lightboxClose.type = "button";
+    lightboxClose.setAttribute("aria-label", "Close expanded image");
+    lightboxClose.textContent = "Close";
+
+    lightboxFigure.appendChild(lightboxImage);
+    lightboxFigure.appendChild(lightboxCaption);
+    lightbox.appendChild(lightboxClose);
+    lightbox.appendChild(lightboxFigure);
+    document.body.appendChild(lightbox);
+
+    var activeLightboxTrigger = null;
+
+    var closeLightbox = function () {
+      lightbox.hidden = true;
+      document.documentElement.classList.remove("aw-lightbox-open");
+      lightboxImage.removeAttribute("src");
+      lightboxImage.removeAttribute("alt");
+      lightboxCaption.textContent = "";
+
+      if (activeLightboxTrigger) {
+        activeLightboxTrigger.focus();
+      }
+    };
+
+    var openLightbox = function (trigger) {
+      activeLightboxTrigger = trigger;
+      lightboxImage.src = trigger.getAttribute("data-aw-lightbox-src");
+      lightboxImage.alt = trigger.getAttribute("data-aw-lightbox-alt") || "";
+      lightboxCaption.textContent = trigger.getAttribute("data-aw-lightbox-caption") || "";
+      lightbox.hidden = false;
+      document.documentElement.classList.add("aw-lightbox-open");
+      lightboxClose.focus();
+    };
+
+    lightboxTriggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        openLightbox(trigger);
+      });
+    });
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !lightbox.hidden) {
+        closeLightbox();
+      }
+    });
+  }
+
   if (consentBanner) {
     var consentKey = "aw-cookie-consent";
     var gtmId = consentBanner.getAttribute("data-gtm-id");
