@@ -95,7 +95,7 @@ $$ ModelNew(x) \approx Model(x) $$
 
 The performance goal is:
 
-$$ T_{\text{ModelNew}} < T_{\text{Model}} $$
+$$ T_{\text{ModelNew}} \lt T_{\text{Model}} $$
 
 KernelBench reports the whole result of the attempt. It checks whether the generated kernel compiles, whether it runs without crashing, whether it produces correct outputs, and whether it is faster than the PyTorch reference.
 
@@ -139,7 +139,7 @@ $$ y = (y_1, y_2, ..., y_m) $$
 
 At step `t`, the model chooses the next token using:
 
-$$ p_\theta(y_t | y_{<t}, x) = \frac{\exp(z_\theta(y_t | y_{<t}, x) / \tau)} {\sum_{y' \in Y} \exp(z_\theta(y' | y_{<t}, x) / \tau)} $$
+$$ p_\theta(y_t \mid y_{\lt t}, x) = \frac{\exp(z_\theta(y_t \mid y_{\lt t}, x) / \tau)} {\sum_{y' \in Y} \exp(z_\theta(y' \mid y_{\lt t}, x) / \tau)} $$
 
 In this equation, `p_theta` is the probability assigned by the LLM to the next token. The value `z_theta` is the raw score, also called the logit. The set `Y` is the vocabulary of possible tokens, and `tau` is the temperature parameter that controls how random or deterministic the generation is.
 
@@ -380,7 +380,7 @@ then the generated kernel is faster.
 
 If:
 
-$$ \text{Speed} < 1 $$
+$$ \text{Speed} \lt 1 $$
 
 then the generated kernel is slower.
 
