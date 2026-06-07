@@ -55,9 +55,7 @@ If a kernel becomes faster, model training and inference can become faster.
 
 The runtime objective is:
 
-$$
-\text{minimize } T_{\text{kernel}}
-$$
+$$ \text{minimize } T_{\text{kernel}} $$
 
 Here, `T_kernel` means the wall-clock runtime of the generated GPU kernel. The smaller this value is, the better the kernel is from a performance point of view.
 
@@ -93,15 +91,11 @@ The LLM must generate a new model named `ModelNew`.
 
 The correctness goal is:
 
-$$
-ModelNew(x) \approx Model(x)
-$$
+$$ ModelNew(x) \approx Model(x) $$
 
 The performance goal is:
 
-$$
-T_{\text{ModelNew}} < T_{\text{Model}}
-$$
+$$ T_{\text{ModelNew}} < T_{\text{Model}} $$
 
 KernelBench reports the whole result of the attempt. It checks whether the generated kernel compiles, whether it runs without crashing, whether it produces correct outputs, and whether it is faster than the PyTorch reference.
 
@@ -137,24 +131,15 @@ The paper describes how an LLM generates tokens.
 
 Given input context:
 
-$$
-x = (x_1, x_2, ..., x_n)
-$$
+$$ x = (x_1, x_2, ..., x_n) $$
 
 the model generates output tokens:
 
-$$
-y = (y_1, y_2, ..., y_m)
-$$
+$$ y = (y_1, y_2, ..., y_m) $$
 
 At step `t`, the model chooses the next token using:
 
-$$
-p_\theta(y_t | y_{<t}, x)
-=
-\frac{\exp(z_\theta(y_t | y_{<t}, x) / \tau)}
-{\sum_{y' \in Y} \exp(z_\theta(y' | y_{<t}, x) / \tau)}
-$$
+$$ p_\theta(y_t | y_{<t}, x) = \frac{\exp(z_\theta(y_t | y_{<t}, x) / \tau)} {\sum_{y' \in Y} \exp(z_\theta(y' | y_{<t}, x) / \tau)} $$
 
 In this equation, `p_theta` is the probability assigned by the LLM to the next token. The value `z_theta` is the raw score, also called the logit. The set `Y` is the vocabulary of possible tokens, and `tau` is the temperature parameter that controls how random or deterministic the generation is.
 
@@ -279,17 +264,13 @@ Each node stores the source code for that attempt, whether it compiled, whether 
 
 The score of a node is its runtime:
 
-$$
-s(n) = T(n)
-$$
+$$ s(n) = T(n) $$
 
 Lower score is better.
 
 If a kernel fails or is incorrect:
 
-$$
-s(n) = +\infty
-$$
+$$ s(n) = +\infty $$
 
 This means a failed kernel should not be treated as a good candidate.
 
@@ -305,21 +286,13 @@ With probability `1 - epsilon`, it exploits the best known attempts.
 
 The simple rule is:
 
-$$
-\pi(n) =
-\begin{cases}
-\text{random expandable node}, & \text{with probability } \epsilon \\
-\text{best known node}, & \text{with probability } 1 - \epsilon
-\end{cases}
-$$
+$$ \pi(n) = \begin{cases} \text{random expandable node}, & \text{with probability } \epsilon \\ \text{best known node}, & \text{with probability } 1 - \epsilon \end{cases} $$
 
 Exploration means the system deliberately tries something different, even if it is not currently the best path. Exploitation means the system focuses on improving the best known attempts. STARK needs both because always exploring wastes time, but always exploiting can get stuck in a weak local solution.
 
 The paper reports using:
 
-$$
-\epsilon \approx 0.3
-$$
+$$ \epsilon \approx 0.3 $$
 
 This means the system explores often enough to avoid getting stuck.
 
@@ -343,36 +316,19 @@ Let `i` be the selected node in the search tree. Let `n_root` be the root node, 
 
 The plan context is:
 
-$$
-W_{\text{plan}}(i)
-=
-\{i, n_{\text{root}}\}
-\cup D(i)
-\cup Top_r(C)
-$$
+$$ W_{\text{plan}}(i) = \{i, n_{\text{root}}\} \cup D(i) \cup Top_r(C) $$
 
 This means the plan agent sees the current node, the original reference, previous children of the current node, and the top global candidates. That gives the plan agent enough information to avoid repeating failed ideas while still seeing the best strategies found so far.
 
 The code context is:
 
-$$
-W_{\text{code}}(i)
-=
-\{i, n_{\text{root}}\}
-\cup D(i)
-\cup \{j : p(j) \in S(i)\}
-$$
+$$ W_{\text{code}}(i) = \{i, n_{\text{root}}\} \cup D(i) \cup \{j : p(j) \in S(i)\} $$
 
 This means the code agent sees the current node, the root reference, child attempts, and related attempts from nearby branches. The purpose is to give the code agent enough concrete examples to implement the plan correctly.
 
 The debug context is:
 
-$$
-W_{\text{debug}}(i)
-=
-\{i, n_{\text{root}}\}
-\cup S(i)
-$$
+$$ W_{\text{debug}}(i) = \{i, n_{\text{root}}\} \cup S(i) $$
 
 This means the debug agent mostly uses local related attempts. That is useful because debugging usually needs nearby context, such as the code that just failed and similar attempts that either failed differently or worked.
 
@@ -390,9 +346,7 @@ For each attempt, STARK selects a node from the tree. If the node has a bug, it 
 
 The final answer is:
 
-$$
-n^* = \arg\min_{n \in C_{\text{correct}}} T(n)
-$$
+$$ n^* = \arg\min_{n \in C_{\text{correct}}} T(n) $$
 
 Here, `C_correct` is the set of kernels that passed correctness testing. The value `T(n)` is the runtime of kernel `n`, and `n*` is the best generated kernel found by the search.
 
@@ -404,48 +358,29 @@ Here, `C_correct` is the set of kernels that passed correctness testing. The val
 
 Success rate measures how often the agent finds a compiled and correct kernel.
 
-$$
-\text{Success Rate}
-=
-\frac{\# \text{correct compiled tasks}}
-{\# \text{total tasks}}
-$$
+$$ \text{Success Rate} = \frac{\# \text{correct compiled tasks}} {\# \text{total tasks}} $$
 
 ### 14.2 Fast1 Rate
 
 Fast1 rate measures how often the generated kernel is at least as fast as the baseline.
 
-$$
-\text{Fast1}
-=
-\frac{\# \text{tasks where } T_{\text{kernel}} \le T_{\text{baseline}}}
-{\# \text{total tasks}}
-$$
+$$ \text{Fast1} = \frac{\# \text{tasks where } T_{\text{kernel}} \le T_{\text{baseline}}} {\# \text{total tasks}} $$
 
 ### 14.3 Speed
 
 Speed is reported as a runtime ratio.
 
-$$
-\text{Speed}
-=
-\frac{T_{\text{baseline}}}
-{T_{\text{kernel}}}
-$$
+$$ \text{Speed} = \frac{T_{\text{baseline}}} {T_{\text{kernel}}} $$
 
 If:
 
-$$
-\text{Speed} > 1
-$$
+$$ \text{Speed} > 1 $$
 
 then the generated kernel is faster.
 
 If:
 
-$$
-\text{Speed} < 1
-$$
+$$ \text{Speed} < 1 $$
 
 then the generated kernel is slower.
 
@@ -662,9 +597,7 @@ Custom kernel: 0.00619 ms
 
 Speedup over eager:
 
-$$
-\frac{0.00387}{0.00619} \approx 0.63
-$$
+$$ \frac{0.00387}{0.00619} \approx 0.63 $$
 
 The custom kernel was correct but slower. This is normal for a tiny operation like elementwise add because the overhead of launching a CUDA kernel can be larger than the actual computation being performed.
 
@@ -706,9 +639,7 @@ Custom kernel: 2.47 ms
 
 Speedup over eager:
 
-$$
-\frac{0.311}{2.47} \approx 0.13
-$$
+$$ \frac{0.311}{2.47} \approx 0.13 $$
 
 The custom kernel was correct but much slower than PyTorch. PyTorch uses highly optimized GPU libraries, so a simple tiled example is useful for validating the setup but should not be expected to beat production-level kernels.
 
@@ -726,29 +657,19 @@ Square matrix multiplication
 
 The reference operation is:
 
-$$
-C = A B
-$$
+$$ C = A B $$
 
 For square matrices:
 
-$$
-A \in \mathbb{R}^{N \times N}
-$$
+$$ A \in \mathbb{R}^{N \times N} $$
 
-$$
-B \in \mathbb{R}^{N \times N}
-$$
+$$ B \in \mathbb{R}^{N \times N} $$
 
-$$
-C \in \mathbb{R}^{N \times N}
-$$
+$$ C \in \mathbb{R}^{N \times N} $$
 
 Each output element is:
 
-$$
-C_{ij} = \sum_{k=0}^{N-1} A_{ik} B_{kj}
-$$
+$$ C_{ij} = \sum_{k=0}^{N-1} A_{ik} B_{kj} $$
 
 The KernelBench problem used:
 
@@ -758,9 +679,7 @@ N = 2048 * 2 = 4096
 
 So the output has:
 
-$$
-4096 \times 4096 = 16,777,216
-$$
+$$ 4096 \times 4096 = 16,777,216 $$
 
 elements.
 
@@ -792,9 +711,7 @@ This file contains a simple tiled CUDA matmul implementation.
 
 The manual kernel computes:
 
-$$
-C_{ij} = \sum_k A_{ik} B_{kj}
-$$
+$$ C_{ij} = \sum_k A_{ik} B_{kj} $$
 
 It uses tiling.
 
@@ -812,20 +729,11 @@ The kernel loads a tile of `A` and a tile of `B` into shared memory.
 
 For each tile:
 
-$$
-\text{acc}_{ij}
-=
-\text{acc}_{ij}
-+
-\sum_{k=0}^{15}
-A^{tile}_{ik} B^{tile}_{kj}
-$$
+$$ \text{acc}_{ij} = \text{acc}_{ij} + \sum_{k=0}^{15} A^{tile}_{ik} B^{tile}_{kj} $$
 
 After all tiles are processed:
 
-$$
-C_{ij} = \text{acc}_{ij}
-$$
+$$ C_{ij} = \text{acc}_{ij} $$
 
 The point of tiling is to avoid reading every value directly from global memory every time it is needed. Instead, the kernel reuses small blocks of `A` and `B` in shared memory, which is faster than global memory when the tiling is implemented well.
 
@@ -866,15 +774,11 @@ Custom kernel: 180.0 ms
 
 Speedup over eager:
 
-$$
-\frac{29.2}{180.0} \approx 0.16
-$$
+$$ \frac{29.2}{180.0} \approx 0.16 $$
 
 Speedup over torch.compile:
 
-$$
-\frac{27.5}{180.0} \approx 0.15
-$$
+$$ \frac{27.5}{180.0} \approx 0.15 $$
 
 The kernel passed correctness, but it was slower than PyTorch/cuBLAS. This means the evaluation pipeline worked, while also showing that correctness alone is not enough for a strong KernelBench result.
 
@@ -892,53 +796,33 @@ Our kernel did not use advanced optimizations such as Tensor Cores, larger optim
 
 The theoretical work for matmul is:
 
-$$
-2N^3
-$$
+$$ 2N^3 $$
 
 For `N = 4096`:
 
-$$
-2 \times 4096^3
-=
-137,438,953,472
-$$
+$$ 2 \times 4096^3 = 137,438,953,472 $$
 
 floating-point operations.
 
 That is about:
 
-$$
-137.4 \text{ GFLOP}
-$$
+$$ 137.4 \text{ GFLOP} $$
 
 Our kernel runtime:
 
-$$
-180 \text{ ms} = 0.180 \text{ s}
-$$
+$$ 180 \text{ ms} = 0.180 \text{ s} $$
 
 Approximate throughput:
 
-$$
-\frac{137.4 \text{ GFLOP}}{0.180 \text{ s}}
-\approx
-763 \text{ GFLOP/s}
-$$
+$$ \frac{137.4 \text{ GFLOP}}{0.180 \text{ s}} \approx 763 \text{ GFLOP/s} $$
 
 PyTorch eager runtime:
 
-$$
-29.2 \text{ ms} = 0.0292 \text{ s}
-$$
+$$ 29.2 \text{ ms} = 0.0292 \text{ s} $$
 
 Approximate throughput:
 
-$$
-\frac{137.4 \text{ GFLOP}}{0.0292 \text{ s}}
-\approx
-4707 \text{ GFLOP/s}
-$$
+$$ \frac{137.4 \text{ GFLOP}}{0.0292 \text{ s}} \approx 4707 \text{ GFLOP/s} $$
 
 cuBLAS used the GPU much more efficiently than our simple tiled kernel. The throughput estimate makes this visible: PyTorch/cuBLAS achieved much higher effective GFLOP/s on the same RTX 3060 Laptop GPU.
 
