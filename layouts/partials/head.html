@@ -20,6 +20,8 @@
     {{ $image = index . 0 }}
   {{ end }}
 {{ end }}
+{{ $imageWidth := .Params.imageWidth | default (site.Params.seo.imageWidth | default 1200) }}
+{{ $imageHeight := .Params.imageHeight | default (site.Params.seo.imageHeight | default 630) }}
 {{ $styles := resources.Get "scss/main.scss" | toCSS (dict "targetPath" "css/main.css") | minify | fingerprint }}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,8 +61,8 @@
 <meta property="og:url" content="{{ .Permalink }}">
 {{ with $image }}
 <meta property="og:image" content="{{ . | relURL | absURL }}">
-<meta property="og:image:width" content="{{ site.Params.seo.imageWidth | default 1200 }}">
-<meta property="og:image:height" content="{{ site.Params.seo.imageHeight | default 630 }}">
+<meta property="og:image:width" content="{{ $imageWidth }}">
+<meta property="og:image:height" content="{{ $imageHeight }}">
 {{ end }}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ $title }}">
